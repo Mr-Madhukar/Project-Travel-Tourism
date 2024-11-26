@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"); 
+
+
+
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navigation Bar Styles */
+.nav-bar {
+    font : #060606 ;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 90px;
+    background-color: #060606;
+    box-shadow: 3px 3px 10px lightslategray;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .logo {
+    flex: 1;
+    font-size: 40px;
+    padding: 20px;
+    margin-left: 50px;
+    font-family: Satisfy;
+  }
+  
+  ul.menu {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+    
+  }
+  
+  .menu li {
+    flex: 1;
+    list-style-type: none;
+    font-size: 16px;
+    font-family: "Barlow Condensed";
+    text-align: center;
+  }
+  
+  .menu li a {
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase;
+  }
+  
+  .menu li a:hover {
+    color: midnightblue;
+    text-decoration: underline;
+  }
+  
+
+/* Ensure that other sections start below the navbar */
+section {
+    margin-top: 70px;
+}
+
+
+/* Tours Section Styles */
+.tours {
+    padding: 80px 20px;
+    margin-top: 60px;
+    background-color: #e0f7fa;
+}
+
+.tours-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tour-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.tour-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.tour-card:hover {
+    transform: translateY(-10px);
+}
+
+.tour-card img {
+    width: 100%;
+    height: auto;
+}
+
+.tour-details {
+    padding: 15px;
+    text-align: center;
+}
