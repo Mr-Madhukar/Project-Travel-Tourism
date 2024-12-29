@@ -134,7 +134,7 @@ ul.menu {
 
 /*=============================Banner=============================*/
 .banner {
-  background-image: url("./image/main.jpg");
+  background-image: url("main.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
