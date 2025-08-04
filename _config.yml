@@ -1,0 +1,32 @@
+# GitHub Pages Configuration for GoTrip Website
+title: GoTrip - Travel & Tourism Website
+description: Your trusted travel partner for unforgettable journeys worldwide
+url: "https://mr-madhukar.github.io"
+baseurl: "/Project-Travel-Tourism"
+
+# Build settings
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .gitignore
+  - .gitattributes
+  - gotrip/
+  - node_modules/
+  - package.json
+  - package-lock.json
+
+# Include files
+include:
+  - _config.yml
+  - index.html
+  - css/
+  - js/
+  - image/
+  - views/
+  - controllers/
+  - services/
+  - sounds/ 
