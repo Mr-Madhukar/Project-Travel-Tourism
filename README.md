@@ -222,4 +222,4 @@ For support and questions:
 
 ---
 
-**GoTrip** - Your trusted travel partner since 1996! ✈️🌍 
+**GoTrip** - Your trusted travel partner since 1996! ✈️🌍
