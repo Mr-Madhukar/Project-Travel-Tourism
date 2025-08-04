@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Go Trip</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <link rel="stylesheet" href="../css/singup.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="signup-page">
+        <div class="signup-container">
+            <div class="signup-header">
+                <div class="logo-container">
+                    <a href="../index.html"><i class="fas fa-plane-departure"></i> Go Trip</a>
+                </div>
+                <h1>Begin Your Journey</h1>
+                <p>Create your account and start exploring the world with Go Trip</p>
+            </div>
+
+            <form class="signup-form" id="registerForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-id-badge"></i>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}"
+                     title="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long">
+                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required
+                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}"
+                     title="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long">
+                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirm-password')"></i>
+                </div>
+
+                <div class="terms-privacy">
+                    <label>
+                        <input type="checkbox" name="agree" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="signup-button">Create Account</button>
+
+                <div class="social-signup">
+                    <p>Or sign up with</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Log In</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="travel-illustration">
+            <!-- This will be styled with a background image in CSS -->
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const eyeIcon = passwordField.nextElementSibling;
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Add debugging to see errors during registration
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+
+            registerForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+
+                // Simple validation
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+
+                // Disable the submit button during registration
+                const submitButton = event.target.querySelector('button[type="submit"]');
+                if (submitButton) submitButton.disabled = true;
+
+                try {
+                    const formData = new FormData();
+                    const fullname = document.getElementById('fullname').value;
+                    formData.append('username', username);
+                    formData.append('email', email);
+                    formData.append('password', password);
+                    formData.append('fullname', fullname);
+
+                    const response = await fetch('http://localhost/gotrip - Copy/register.php', {
+                        method: 'POST',
+                        body: formData,
+                        credentials: 'include'
+                    });
+
+                    // Get the raw text first
+                    const responseText = await response.text();
+                    
+                    // Try to parse it as JSON
+                    let data;
+                    try {
+                        data = JSON.parse(responseText);
+                        console.log("Registration response:", data);
+                        
+                        if (data.status === 'success') {
+                            alert('Registration successful! Please login to continue.');
+                            window.location.href = 'login.html';
+                        } else {
+                            const errorMessage = data.message || 'Registration failed. Please try again.';
+                            console.error("Registration error details:", data);
+                            alert(errorMessage + "\n\nPlease check the browser console for more details.");
+                        }
+                    } catch (jsonError) {
+                        // If it's not valid JSON, it's probably an HTML error page
+                        console.error('Server returned invalid JSON:', responseText);
+                        alert('The server returned an error. Check the console for details.');
+                        // Display the HTML error in the console
+                        console.log('Raw server response:', responseText);
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    // Try to get response text if available
+                    let errorMessage = 'An error occurred during registration. Please try again.';
+                    if (error.response) {
+                        try {
+                            const responseText = await error.response.text();
+                            console.error('Server response:', responseText);
+                            errorMessage += '\n\nServer response: ' + responseText;
+                        } catch (e) {
+                            console.error('Could not read response text:', e);
+                        }
+                    }
+                    alert(errorMessage);
+                } finally {
+                    // Re-enable the submit button
+                    if (submitButton) submitButton.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

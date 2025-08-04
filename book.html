@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Get the current URL's query parameters
+        const queryParams = window.location.search;
+        
+        // Redirect to the correct location
+        window.location.href = "views/book.html" + queryParams;
+    </script>
+    <meta http-equiv="refresh" content="0;url=views/book.html">
+</head>
+<body>
+    <p>Redirecting to <a href="views/book.html">booking page</a>...</p>
+</body>
+</html> 

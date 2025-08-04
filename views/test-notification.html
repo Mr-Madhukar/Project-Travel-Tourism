@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Sound Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .test-section {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .console {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-top: 20px;
+            height: 150px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+        .success {
+            color: #2ecc71;
+        }
+        .error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>GoTrip Notification Sound Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Notification Sound</h2>
+        <p>This page allows you to test the notification sound for the GoTrip travel alerts system.</p>
+        
+        <button id="init-btn" class="btn">Initialize Sound</button>
+        <button id="play-btn" class="btn" disabled>Play Sound (50%)</button>
+        <button id="play-quiet-btn" class="btn" disabled>Play Sound (25%)</button>
+        <button id="play-loud-btn" class="btn" disabled>Play Sound (75%)</button>
+        
+        <div class="console" id="console">
+            <div class="log-entry">Ready to test notification sounds...</div>
+        </div>
+    </div>
+    
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Console logging
+        function logToConsole(message, type = 'info') {
+            const consoleElem = document.getElementById('console');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = message;
+            consoleElem.appendChild(logEntry);
+            consoleElem.scrollTop = consoleElem.scrollHeight;
+        }
+        
+        // Initialize buttons
+        const initBtn = document.getElementById('init-btn');
+        const playBtn = document.getElementById('play-btn');
+        const playQuietBtn = document.getElementById('play-quiet-btn');
+        const playLoudBtn = document.getElementById('play-loud-btn');
+        
+        // Create notification sound instance
+        let notificationSound = null;
+        
+        // Initialize button click handler
+        initBtn.addEventListener('click', async () => {
+            logToConsole('Initializing notification sound...');
+            
+            try {
+                notificationSound = new NotificationSound();
+                const result = await notificationSound.initialize();
+                
+                if (result) {
+                    logToConsole('Notification sound initialized successfully!', 'success');
+                    playBtn.disabled = false;
+                    playQuietBtn.disabled = false;
+                    playLoudBtn.disabled = false;
+                    initBtn.disabled = true;
+                } else {
+                    logToConsole('Failed to initialize notification sound.', 'error');
+                }
+            } catch (error) {
+                logToConsole(`Error initializing sound: ${error.message}`, 'error');
+            }
+        });
+        
+        // Play sound buttons
+        playBtn.addEventListener('click', () => {
+            logToConsole('Playing notification sound at 50% volume...');
+            if (notificationSound && notificationSound.initialized) {
+                const success = notificationSound.play(0.5);
+                if (!success) {
+                    logToConsole('Failed to play sound.', 'error');
+                }
+            } else {
+                logToConsole('Notification sound not initialized. Initialize first.', 'error');
+            }
+        });
+        
+        playQuietBtn.addEventListener('click', () => {
+            logToConsole('Playing notification sound at 25% volume...');
+            if (notificationSound && notificationSound.initialized) {
+                const success = notificationSound.play(0.25);
+                if (!success) {
+                    logToConsole('Failed to play sound.', 'error');
+                }
+            } else {
+                logToConsole('Notification sound not initialized. Initialize first.', 'error');
+            }
+        });
+        
+        playLoudBtn.addEventListener('click', () => {
+            logToConsole('Playing notification sound at 75% volume...');
+            if (notificationSound && notificationSound.initialized) {
+                const success = notificationSound.play(0.75);
+                if (!success) {
+                    logToConsole('Failed to play sound.', 'error');
+                }
+            } else {
+                logToConsole('Notification sound not initialized. Initialize first.', 'error');
+            }
+        });
+    </script>
+</body>
+</html> 

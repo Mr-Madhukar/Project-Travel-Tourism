@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Go Trip - Booking Confirmation" />
+    <meta name="keywords" content="travel, booking, confirmation, holiday packages, travel agency" />
+    
+    <title>Booking Confirmation | Go Trip</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/modern-additions.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Confirmation page specific styles */
+        .confirmation-section {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(249, 249, 249, 0.9)), url('../image/mountains.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 80vh;
+        }
+        
+        .confirmation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .confirmation-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .confirmation-header {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confirmation-header::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+        }
+        
+        .confirmation-header h1 {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .confirmation-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .confirmation-content {
+            padding: 40px;
+        }
+        
+        .booking-number {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .booking-number p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .booking-number strong {
+            display: block;
+            font-size: 1.6em;
+            color: #1a2980;
+            letter-spacing: 1px;
+        }
+        
+        .booking-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-item {
+            margin-bottom: 15px;
+        }
+        
+        .detail-item label {
+            display: block;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .detail-item p {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .booking-summary {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .summary-item.total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1a2980;
+        }
+        
+        .confirmation-actions {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .action-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1 0 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .primary-btn {
+            background-color: #1a2980;
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background-color: #26d0ce;
+            transform: translateY(-3px);
+        }
+        
+        .secondary-btn {
+            background-color: rgba(26, 41, 128, 0.1);
+            color: #1a2980;
+        }
+        
+        .secondary-btn:hover {
+            background-color: rgba(26, 41, 128, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .share-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .share-button.facebook:hover {
+            background-color: #3b5998;
+            color: white;
+        }
+        
+        .share-button.twitter:hover {
+            background-color: #1da1f2;
+            color: white;
+        }
+        
+        .share-button.email:hover {
+            background-color: #ea4335;
+            color: white;
+        }
+        
+        .share-button.whatsapp:hover {
+            background-color: #25d366;
+            color: white;
+        }
+        
+        .suggested-packages {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .suggested-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .package-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .package-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-content {
+            padding: 20px;
+        }
+        
+        .package-name {
+            font-weight: 600;
+            font-size: 1.2em;
+            color: #1a2980;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .package-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #1a2980;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .package-link:hover {
+            background-color: #26d0ce;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .confirmation-header {
+                padding: 25px 15px;
+            }
+            
+            .confirmation-header h1 {
+                font-size: 2em;
+            }
+            
+            .confirmation-content {
+                padding: 25px 20px;
+            }
+            
+            .booking-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .confirmation-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-btn {
+                width: 100%;
+            }
+            
+            .package-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../image/logo.png" alt="Go Trip Logo" class="logo-img">
+                        <span>Go Trip</span>
+                    </a>
+                </div>
+                <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="menu">
+                    <li class="home-item"><a href="../index.html"><i class="fas fa-home"></i></a></li>
+                    <li><a href="packages.html"><i class="fas fa-box"></i> Packages</a></li>
+                    <li><a href="tours.html"><i class="fas fa-globe"></i> Tours</a></li>
+                    <li><a href="trip-planner.html"><i class="fas fa-map"></i> Planner</a></li>
+                    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                    <li><a href="about.html"><i class="fas fa-info"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="login-item"><a href="login.html" id="loginLink" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+                    <li class="booking-item" style="display: none;"><a href="../../user_dashboard.php" id="myBookingsLink" data-tooltip="My Dashboard"><i class="fas fa-user-circle"></i></a></li>
+                    <li class="logout-item" style="display: none;"><a href="#" id="logoutLink" data-tooltip="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a href="#" class="enable-alerts-btn" id="enableAlertsBtn" data-tooltip="Notifications"><i class="fas fa-bell"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Confirmation Section -->
+    <section class="confirmation-section">
+        <div class="confirmation-container">
+            <div class="confirmation-card" data-aos="fade-up">
+                <div class="confirmation-header">
+                    <h1>Booking Confirmed!</h1>
+                    <p>Your travel adventure is set to begin. We've sent the details to your email.</p>
+                </div>
+                
+                <div class="confirmation-content">
+                    <div class="booking-number">
+                        <p>Your Booking Reference</p>
+                        <strong id="bookingReference">GT-2024-87654321</strong>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <label>Destination</label>
+                            <p id="detailDestination">Swiss Adventure</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label>Travel Date</label>
+                            <p id="detailDate">August 15, 2024</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label>Duration</label>
+                            <p id="detailDuration">5 Days</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label>Travelers</label>
+                            <p id="detailTravelers">2 Adults</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label>Full Name</label>
+                            <p id="detailName">John Smith</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <label>Email</label>
+                            <p id="detailEmail">john.smith@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <div class="summary-title">Booking Summary</div>
+                        
+                        <div class="summary-item">
+                            <span>Package Price (2 Adults)</span>
+                            <span id="summaryPackage">₹ 3,19,998.00</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span>Room Upgrade (Deluxe)</span>
+                            <span id="summaryRoom">₹ 25,000.00</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span>Additional Services</span>
+                            <span id="summaryServices">₹ 12,500.00</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span>Taxes & Fees</span>
+                            <span id="summaryTaxes">₹ 17,874.95</span>
+                        </div>
+                        
+                        <div class="summary-item total">
+                            <span>Total</span>
+                            <span id="summaryTotal">₹ 3,75,372.95</span>
+                        </div>
+                    </div>
+                    
+                    <div class="confirmation-actions">
+                        <a href="../../user_dashboard.php" class="action-btn primary-btn">
+                            <i class="fas fa-user-circle"></i> Go to Dashboard
+                        </a>
+                        <a href="#" class="action-btn secondary-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                        <a href="contact.html" class="action-btn secondary-btn">
+                            <i class="fas fa-envelope"></i> Contact Us
+                        </a>
+                    </div>
+                    
+                    <div class="share-options">
+                        <a href="#" class="share-button facebook" title="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-button twitter" title="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-button whatsapp" title="Share on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="share-button email" title="Share via Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Suggested Packages -->
+            <div class="suggested-packages" data-aos="fade-up">
+                <h2 class="suggested-title">You Might Also Like</h2>
+                
+                <div class="package-cards">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="../image/paris.jpg" alt="Paris Escapade">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-name">Paris Escapade</h3>
+                            <p class="package-price">₹ 1,49,999 / Per Person</p>
+                            <a href="packages.html#paris" class="package-link">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="../image/tokyo.jpg" alt="Tokyo Explorer">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-name">Tokyo Explorer</h3>
+                            <p class="package-price">₹ 1,69,999 / Per Person</p>
+                            <a href="packages.html#tokyo" class="package-link">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="../image/monaco.jpg" alt="Monaco Luxury">
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-name">Monaco Luxury</h3>
+                            <p class="package-price">₹ 1,39,999 / Per Person</p>
+                            <a href="packages.html#monaco" class="package-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-column">
+                <h3>About Go Trip</h3>
+                <p>We are a premium travel agency specializing in handcrafted travel experiences to the world's most amazing destinations.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Travel Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i>G.P PURNEA</p>
+                <p><i class="fas fa-phone"></i> +91 9473452441</p>
+                <p><i class="fas fa-envelope"></i> info@gotrip.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const package = urlParams.get('package');
+            const date = urlParams.get('date');
+            const travelers = urlParams.get('travelers');
+            const name = urlParams.get('name');
+            const email = urlParams.get('email');
+            
+            // Fill in booking details if parameters are present
+            if (package) {
+                document.getElementById('detailDestination').textContent = package;
+            }
+            
+            if (date) {
+                // Format date
+                const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('detailDate').textContent = formattedDate;
+            }
+            
+            if (travelers) {
+                document.getElementById('detailTravelers').textContent = `${travelers} ${travelers > 1 ? 'Adults' : 'Adult'}`;
+                
+                // Update package price based on travelers
+                const basePriceElement = document.getElementById('summaryPackage');
+                if (basePriceElement) {
+                    const basePrice = 159999;
+                    const totalPrice = basePrice * parseInt(travelers);
+                    basePriceElement.textContent = `₹ ${totalPrice.toLocaleString('en-IN')}.00`;
+                    
+                    // Recalculate total
+                    recalculateTotal();
+                }
+            }
+            
+            if (name) {
+                document.getElementById('detailName').textContent = name;
+            }
+            
+            if (email) {
+                document.getElementById('detailEmail').textContent = email;
+            }
+            
+            // Generate random booking reference
+            const bookingRef = document.getElementById('bookingReference');
+            if (bookingRef) {
+                const randomNum = Math.floor(Math.random() * 9000000) + 1000000;
+                bookingRef.textContent = `GT-2024-${randomNum}`;
+            }
+            
+            // Function to recalculate total
+            function recalculateTotal() {
+                const packagePrice = parseFloat(document.getElementById('summaryPackage').textContent.replace(/[^\d.]/g, ''));
+                const roomPrice = parseFloat(document.getElementById('summaryRoom').textContent.replace(/[^\d.]/g, ''));
+                const servicesPrice = parseFloat(document.getElementById('summaryServices').textContent.replace(/[^\d.]/g, ''));
+                const taxesPrice = parseFloat(document.getElementById('summaryTaxes').textContent.replace(/[^\d.]/g, ''));
+                
+                const total = packagePrice + roomPrice + servicesPrice + taxesPrice;
+                document.getElementById('summaryTotal').textContent = `₹ ${total.toLocaleString('en-IN')}.00`;
+            }
+            
+            // Handle login/logout
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+            
+            // Enable alerts button
+            document.getElementById('enableAlertsBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Travel alerts have been enabled for your journey!');
+            });
+            
+            // Download PDF button (mock functionality)
+            document.getElementById('downloadBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Your booking confirmation is being downloaded as PDF.');
+            });
+            
+            // Mobile menu toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menu = document.querySelector('.menu');
+            
+            mobileMenu.addEventListener('click', function() {
+                this.classList.toggle('is-active');
+                menu.classList.toggle('active');
+            });
+            
+            // Share buttons functionality (mock)
+            const shareButtons = document.querySelectorAll('.share-button');
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const platform = this.classList.contains('facebook') ? 'Facebook' :
+                                    this.classList.contains('twitter') ? 'Twitter' :
+                                    this.classList.contains('whatsapp') ? 'WhatsApp' : 'Email';
+                    alert(`Sharing your booking confirmation via ${platform}`);
+                });
+            });
+        });
+        
+        // Logout function
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html> 

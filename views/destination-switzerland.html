@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switzerland - Go Trip</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/destination.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Destination Header -->
+    <section class="destination-header destination-page" style="background-image: url(../image/switzerland.png);" data-destination-id="3">
+        <div class="destination-overlay"></div>
+        <div class="destination-title">
+            <h1>Breathtaking Switzerland</h1>
+            <p>Discover alpine paradise with snow-capped mountains, pristine lakes, and charming villages</p>
+        </div>
+    </section>
+
+    <!-- Destination Overview -->
+    <section class="destination-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Why Visit Switzerland?</h2>
+                    <p>Switzerland, a land of mesmerizing contrasts, offers an unparalleled blend of natural beauty, cultural richness, and precision-crafted experiences. From snow-capped Alpine peaks to emerald valleys, medieval towns to cosmopolitan cities, this small European nation captivates visitors with its diverse landscapes and exceptional quality of life. Whether you seek adventure, relaxation, or cultural immersion, Switzerland delivers unforgettable experiences in a pristine, picture-perfect setting.</p>
+                    
+                    <div class="overview-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">⛰️</span>
+                            <h3>Alpine Wonderland</h3>
+                            <p>Explore majestic mountains, crystal-clear lakes, and lush green valleys in every season</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🚞</span>
+                            <h3>Scenic Rail Journeys</h3>
+                            <p>Experience breathtaking panoramic train routes through stunning landscapes</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🧀</span>
+                            <h3>Culinary Delights</h3>
+                            <p>Savor world-famous Swiss chocolate, cheese fondue, and fine regional cuisine</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">⏱️</span>
+                            <h3>Heritage & Tradition</h3>
+                            <p>Discover charming villages, medieval towns, and centuries of rich cultural history</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-details">
+                    <div class="detail-box">
+                        <h3>Best Time to Visit</h3>
+                        <p>Summer (June-August) for hiking, lake activities, and mountain adventures</p>
+                        <p>Winter (December-March) for skiing and snow sports</p>
+                        <p>Spring/Fall (April-May/September-October) for fewer crowds and mild weather</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Languages</h3>
+                        <p>German, French, Italian, and Romansh (official languages)</p>
+                        <p>English widely spoken in tourist areas</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Currency</h3>
+                        <p>Swiss Franc (CHF)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Stay Updated</h3>
+                        <button class="enable-notifications"><i class="fas fa-bell"></i> Get Switzerland Travel Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-places">
+        <div class="container">
+            <h2>Top Tourist Destinations in Switzerland</h2>
+            <div class="places-grid">
+                <div class="place-card" data-aos="fade-up">
+                    <div class="place-img">
+                        <img src="https://deih43ym53wif.cloudfront.net/zermatt-matterhorn-switzerland-shutterstock_1298208013_44fea015e5.jpeg" alt="Matterhorn, Zermatt">
+                    </div>
+                    <div class="place-info">
+                        <h3>Matterhorn & Zermatt</h3>
+                        <p>Iconic pyramid-shaped mountain and car-free alpine resort town with excellent skiing and hiking</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="place-img">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.ZFUAguSGi4wU6KqA0EBFXgAAAA?cb=iwc1&rs=1&pid=ImgDetMain" alt="Lucerne">
+                    </div>
+                    <div class="place-info">
+                        <h3>Lucerne</h3>
+                        <p>Picturesque medieval town with a stunning lake, wooden Chapel Bridge, and mountain excursions</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="place-img">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.dFiL8H8nH4JDGs-KQsjXNQHaFF?cb=iwc1&rs=1&pid=ImgDetMain" alt="Jungfraujoch">
+                    </div>
+                    <div class="place-info">
+                        <h3>Jungfraujoch - Top of Europe</h3>
+                        <p>Europe's highest railway station with spectacular glacier views, ice palace, and snow activities</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 1 day</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="place-img">
+                        <img src="https://www.balmers.com/wp-content/uploads/2019/04/lauterbrunnen-hike-interlaken-1024x683.jpg" alt="Interlaken">
+                    </div>
+                    <div class="place-info">
+                        <h3>Interlaken & Lauterbrunnen</h3>
+                        <p>Adventure capital with stunning valley of 72 waterfalls, nestled between two lakes</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=1000&auto=format&fit=crop" alt="Geneva">
+                    </div>
+                    <div class="place-info">
+                        <h3>Geneva</h3>
+                        <p>International hub with the famous Jet d'Eau fountain, diplomatic quarter, and Lake Geneva</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="place-img">
+                        <img src="https://d36tnp772eyphs.cloudfront.net/blogs/1/2019/01/View-of-Bern-old-city-center-with-river-Aare.-Bern-is-capital-of-Switzerland-and-fourth-most-populous-city-in-Switzerland.jpg" alt="Bern">
+                    </div>
+                    <div class="place-info">
+                        <h3>Bern</h3>
+                        <p>UNESCO-listed medieval old town, capital city with arcaded shopping streets and bear park</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 1-2 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Packages -->
+    <section class="trip-packages">
+        <div class="container">
+            <h2>Switzerland Tour Packages</h2>
+            <p class="section-intro">Choose from our carefully curated travel packages designed to give you the ultimate Swiss experience</p>
+            
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <div class="package-header">
+                        <h3>Swiss Highlights Tour</h3>
+                        <span class="package-price">₹1,29,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 7 Days</span>
+                            <span>👥 Max Group Size: 12</span>
+                            <span>🏨 4 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Zurich, City Tour, Welcome Dinner</li>
+                                <li><strong>Day 2:</strong> Lucerne & Mount Pilatus Excursion</li>
+                                <li><strong>Day 3:</strong> Travel to Interlaken, Lauterbrunnen Valley</li>
+                                <li><strong>Day 4:</strong> Jungfraujoch - Top of Europe Excursion</li>
+                                <li><strong>Day 5:</strong> Travel to Zermatt, Matterhorn Glacier Paradise</li>
+                                <li><strong>Day 6:</strong> Glacier Express Train to St. Moritz</li>
+                                <li><strong>Day 7:</strong> Return to Zurich, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ All accommodation</li>
+                                <li>✓ Daily breakfast, select dinners</li>
+                                <li>✓ All transportation within Switzerland</li>
+                                <li>✓ Mountain excursion tickets</li>
+                                <li>✓ Glacier Express panoramic train</li>
+                                <li>✓ Expert guides throughout</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Swiss%20Highlights%20Tour" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-header">
+                        <h3>Alpine Adventure</h3>
+                        <span class="package-price">₹1,49,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 8 Days</span>
+                            <span>👥 Max Group Size: 8</span>
+                            <span>🏨 4-5 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Geneva, Lake Geneva Cruise</li>
+                                <li><strong>Day 2:</strong> Montreux and Chillon Castle</li>
+                                <li><strong>Day 3:</strong> GoldenPass Panoramic Train to Interlaken</li>
+                                <li><strong>Day 4:</strong> Adventure Activities in Interlaken (paragliding or canyoning)</li>
+                                <li><strong>Day 5:</strong> Schilthorn Summit and Thrill Walk</li>
+                                <li><strong>Day 6:</strong> Travel to Lucerne, Mount Titlis Excursion</li>
+                                <li><strong>Day 7:</strong> Swiss Chocolate and Cheese Experience</li>
+                                <li><strong>Day 8:</strong> Return to Geneva, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Boutique accommodation</li>
+                                <li>✓ Daily breakfast, select gourmet meals</li>
+                                <li>✓ First-class train tickets</li>
+                                <li>✓ Adventure activities (choice of one)</li>
+                                <li>✓ Cable car and mountain excursions</li>
+                                <li>✓ Chocolate and cheese tasting workshop</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Alpine%20Adventure" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-header">
+                        <h3>Winter Wonderland</h3>
+                        <span class="package-price">₹1,69,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 6 Days</span>
+                            <span>👥 Max Group Size: 10</span>
+                            <span>🏨 Luxury Alpine Lodges</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Zurich, Transfer to St. Moritz</li>
+                                <li><strong>Day 2:</strong> St. Moritz Skiing or Winter Activities</li>
+                                <li><strong>Day 3:</strong> Bernina Express to Zermatt</li>
+                                <li><strong>Day 4:</strong> Zermatt Skiing and Mountain Dining</li>
+                                <li><strong>Day 5:</strong> Sledging and Snowshoeing Adventure</li>
+                                <li><strong>Day 6:</strong> Return to Zurich, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Luxury alpine accommodation</li>
+                                <li>✓ Daily breakfast and dinners</li>
+                                <li>✓ 3-day ski pass</li>
+                                <li>✓ Bernina Express panoramic train</li>
+                                <li>✓ Winter activity equipment rental</li>
+                                <li>✓ Mountain dining experience</li>
+                                <li>✓ Private transfers throughout</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Winter%20Wonderland" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips">
+        <div class="container">
+            <h2>Travel Tips for Switzerland</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <div class="tip-icon">🚆</div>
+                    <h3>Swiss Travel Pass</h3>
+                    <p>Consider purchasing a Swiss Travel Pass for unlimited travel on trains, buses, and boats, plus free entry to over 500 museums.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-icon">💰</div>
+                    <h3>Budget Planning</h3>
+                    <p>Switzerland is expensive. Plan your budget carefully and look for tax-free shopping opportunities for significant purchases.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-icon">🌦️</div>
+                    <h3>Weather Preparation</h3>
+                    <p>Mountain weather can change rapidly. Pack layers, waterproof clothing, and proper footwear regardless of the season.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-icon">🔌</div>
+                    <h3>Power Adapters</h3>
+                    <p>Switzerland uses Type J plugs (three-pin), which differ from most European countries. Bring the appropriate adapter for your devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience Switzerland?</h2>
+            <p>Book your dream Alpine adventure today and create memories that will last a lifetime.</p>
+            <a href="book.html?destination=Switzerland" class="cta-button">Book Your Trip Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                        </ul>
+                        <form class="footer-newsletter-form">
+                            <h3>Newsletter</h3>
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Your Email" required>
+                                <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    
+                    // Redirect to home page
+                    window.location.href = '../index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                });
+        }
+    </script>
+    
+    <!-- Travel Alerts Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Set the path for travel alerts JSON
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+
+    <!-- Back to Top Button JavaScript -->
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html> 

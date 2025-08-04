@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Planner - Go Trip</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/trip-planner.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/favicon_io/favicon-32x32.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">
+            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 5px;">
+                <i class="fas fa-plane-departure" style="color: white; font-size: 16px;"></i>
+            </div>
+            Go Trip
+        </div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="trip-planner.html" class="active">Trip Planner</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container -->
+    <div class="inline-alerts"></div>
+
+    <!-- Trip Planner Header -->
+    <header class="planner-header">
+        <div class="planner-header-content">
+            <h1>Build Your Dream Trip</h1>
+            <p>Create a personalized travel experience by selecting from our curated accommodations, attractions, and transportation options.</p>
+            <div class="header-buttons" style="margin-top: 25px;">
+                <a href="#destination-section" class="btn btn-primary" style="margin-right: 15px;">Start Planning</a>
+                <a href="#saved-itineraries-section" class="btn btn-secondary">View Saved Itineraries</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trip Planner Main Content -->
+    <main class="planner-container">
+        <!-- Authentication Check -->
+        <div id="auth-required" class="auth-message" style="display: none;">
+            <div class="auth-content">
+                <h2>Login Required</h2>
+                <p>Please login or sign up to create and save your custom itinerary.</p>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                    <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planner Interface (only visible when logged in) -->
+        <div id="planner-interface">
+            <!-- Destination Selection -->
+            <section class="planner-section" id="destination-section" data-aos="fade-up">
+                <h2><i class="fas fa-map-marker-alt" style="color: #ff6b6b; margin-right: 10px;"></i>1. Choose Your Destination</h2>
+                <div class="destination-selector">
+                    <select id="destination-select" class="planner-select" title="Select a destination">
+                        <option value="">Select a destination</option>
+                        <!-- Destinations will be loaded here -->
+                    </select>
+                </div>
+                <div class="destination-info">
+                    <!-- Destination details will appear here -->
+                </div>
+            </section>
+
+            <!-- Date Selection -->
+            <section class="planner-section" id="date-section" data-aos="fade-up" data-aos-delay="100">
+                <h2><i class="far fa-calendar-alt" style="color: #4ecdc4; margin-right: 10px;"></i>2. Select Your Travel Dates</h2>
+                <div class="date-selector">
+                    <div class="date-field">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" class="planner-input">
+                    </div>
+                    <div class="date-field">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" id="end-date" class="planner-input">
+                    </div>
+                </div>
+                <div class="trip-duration">
+                    <i class="fas fa-hourglass-half" style="margin-right: 8px; color: #ffbe0b;"></i>
+                    <span id="duration-display">Trip duration: 0 days</span>
+                </div>
+            </section>
+
+            <!-- Accommodations -->
+            <section class="planner-section" id="accommodation-section" data-aos="fade-up" data-aos-delay="200">
+                <h2><i class="fas fa-bed" style="color: #ff6b6b; margin-right: 10px;"></i>3. Choose Your Accommodation</h2>
+                <div class="accommodations-container">
+                    <div class="loading-spinner" id="accommodation-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading accommodations...
+                    </div>
+                    <div class="accommodations-list" id="accommodations-list">
+                        <!-- Sample accommodation cards for visual preview -->
+                        <div class="accommodation-card">
+                            <div class="accommodation-image">
+                                <img src="../image/accommodations/hotel-crillon.jpg" alt="Hotel Crillon">
+                            </div>
+                            <div class="accommodation-details">
+                                <h3>Le Crillon</h3>
+                                <div class="accommodation-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="accommodation-amenities">
+                                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                                    <span class="amenity"><i class="fas fa-swimming-pool"></i> Pool</span>
+                                    <span class="amenity"><i class="fas fa-utensils"></i> Restaurant</span>
+                                </div>
+                                <div class="accommodation-price">₹ 35,000 / night</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="accommodation-card">
+                            <div class="accommodation-image">
+                                <img src="../image/accommodations/le-meurice.jpg" alt="Le Meurice">
+                            </div>
+                            <div class="accommodation-details">
+                                <h3>Le Meurice</h3>
+                                <div class="accommodation-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="accommodation-amenities">
+                                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                                    <span class="amenity"><i class="fas fa-spa"></i> Spa</span>
+                                    <span class="amenity"><i class="fas fa-concierge-bell"></i> Room Service</span>
+                                </div>
+                                <div class="accommodation-price">₹ 42,000 / night</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="accommodation-card">
+                            <div class="accommodation-image">
+                                <img src="../image/accommodations/plaza-athenee.jpg" alt="Plaza Athénée">
+                            </div>
+                            <div class="accommodation-details">
+                                <h3>Plaza Athénée</h3>
+                                <div class="accommodation-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="accommodation-amenities">
+                                    <span class="amenity"><i class="fas fa-wifi"></i> Free WiFi</span>
+                                    <span class="amenity"><i class="fas fa-glass-cheers"></i> Bar</span>
+                                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
+                                </div>
+                                <div class="accommodation-price">₹ 38,500 / night</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transportation -->
+            <section class="planner-section" id="transportation-section" data-aos="fade-up" data-aos-delay="300">
+                <h2><i class="fas fa-car" style="color: #4ecdc4; margin-right: 10px;"></i>4. Select Transportation</h2>
+                <div class="transportation-container">
+                    <div class="loading-spinner" id="transportation-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading transportation options...
+                    </div>
+                    <div class="transportation-list" id="transportation-list">
+                        <!-- Sample transportation cards for visual preview -->
+                        <div class="transportation-card">
+                            <div class="transportation-icon">
+                                <i class="fas fa-taxi"></i>
+                            </div>
+                            <div class="transportation-details">
+                                <h3>Private Taxi</h3>
+                                <p>Convenient door-to-door service with professional drivers</p>
+                                <div class="transportation-price">₹ 4,500 / day</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="transportation-card">
+                            <div class="transportation-icon">
+                                <i class="fas fa-subway"></i>
+                            </div>
+                            <div class="transportation-details">
+                                <h3>Metro Pass</h3>
+                                <p>Unlimited access to the city's metro system</p>
+                                <div class="transportation-price">₹ 800 / day</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="transportation-card">
+                            <div class="transportation-icon">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                            <div class="transportation-details">
+                                <h3>Rental Car</h3>
+                                <p>Self-drive option with various car models</p>
+                                <div class="transportation-price">₹ 3,200 / day</div>
+                                <button class="select-btn">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attractions -->
+            <section class="planner-section" id="attractions-section" data-aos="fade-up" data-aos-delay="400">
+                <h2><i class="fas fa-monument" style="color: #ffbe0b; margin-right: 10px;"></i>5. Choose Attractions to Visit</h2>
+                <div class="attractions-container">
+                    <div class="loading-spinner" id="attractions-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading attractions...
+                    </div>
+                    <div class="attractions-list" id="attractions-list">
+                        <!-- Sample attraction cards for visual preview -->
+                        <div class="attraction-card">
+                            <div class="attraction-image">
+                                <img src="../image/attractions/eiffel-tower.jpg" alt="Eiffel Tower">
+                                <div class="attraction-category">Landmark</div>
+                            </div>
+                            <div class="attraction-details">
+                                <h3>Eiffel Tower</h3>
+                                <div class="attraction-info">
+                                    <div class="attraction-duration"><i class="far fa-clock"></i> 3 hours</div>
+                                    <div class="attraction-price">₹ 2,500</div>
+                                </div>
+                                <button class="select-btn">Add to Itinerary</button>
+                            </div>
+                        </div>
+                        <div class="attraction-card">
+                            <div class="attraction-image">
+                                <img src="../image/attractions/louvre.jpg" alt="Louvre Museum">
+                                <div class="attraction-category">Museum</div>
+                            </div>
+                            <div class="attraction-details">
+                                <h3>Louvre Museum</h3>
+                                <div class="attraction-info">
+                                    <div class="attraction-duration"><i class="far fa-clock"></i> 4 hours</div>
+                                    <div class="attraction-price">₹ 1,800</div>
+                                </div>
+                                <button class="select-btn">Add to Itinerary</button>
+                            </div>
+                        </div>
+                        <div class="attraction-card">
+                            <div class="attraction-image">
+                                <img src="../image/attractions/arc-de-triomphe.jpg" alt="Arc de Triomphe">
+                                <div class="attraction-category">Monument</div>
+                            </div>
+                            <div class="attraction-details">
+                                <h3>Arc de Triomphe</h3>
+                                <div class="attraction-info">
+                                    <div class="attraction-duration"><i class="far fa-clock"></i> 1.5 hours</div>
+                                    <div class="attraction-price">₹ 1,200</div>
+                                </div>
+                                <button class="select-btn">Add to Itinerary</button>
+                            </div>
+                        </div>
+                        <div class="attraction-card">
+                            <div class="attraction-image">
+                                <img src="../image/attractions/notre-dame.jpg" alt="Notre Dame">
+                                <div class="attraction-category">Cathedral</div>
+                            </div>
+                            <div class="attraction-details">
+                                <h3>Notre Dame</h3>
+                                <div class="attraction-info">
+                                    <div class="attraction-duration"><i class="far fa-clock"></i> 2 hours</div>
+                                    <div class="attraction-price">₹ 0</div>
+                                </div>
+                                <button class="select-btn">Add to Itinerary</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary Builder -->
+            <section class="planner-section" id="itinerary-section" data-aos="fade-up" data-aos-delay="500">
+                <h2><i class="fas fa-calendar-day" style="color: #ff6b6b; margin-right: 10px;"></i>6. Build Your Daily Itinerary</h2>
+                <div class="itinerary-builder">
+                    <div class="itinerary-days" id="itinerary-days">
+                        <!-- Sample day tabs for visual preview -->
+                        <div class="day-tab active">Day 1</div>
+                        <div class="day-tab">Day 2</div>
+                        <div class="day-tab">Day 3</div>
+                    </div>
+                    <div class="day-planner" id="day-planner">
+                        <!-- Sample timeline for visual preview -->
+                        <div class="day-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">09:00 AM</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-attraction">
+                                        <h4>Eiffel Tower</h4>
+                                        <p>Iconic landmark with panoramic views of Paris</p>
+                                    </div>
+                                    <div class="timeline-actions">
+                                        <button class="timeline-btn edit-btn" title="Edit attraction"><i class="fas fa-edit"></i></button>
+                                        <button class="timeline-btn delete-btn" title="Remove attraction"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">12:30 PM</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-attraction">
+                                        <h4>Lunch Break</h4>
+                                        <p>Recommended: Café de Flore</p>
+                                    </div>
+                                    <div class="timeline-actions">
+                                        <button class="timeline-btn edit-btn" title="Edit lunch break"><i class="fas fa-edit"></i></button>
+                                        <button class="timeline-btn delete-btn" title="Remove lunch break"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">02:00 PM</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-attraction">
+                                        <h4>Louvre Museum</h4>
+                                        <p>World-famous art museum home to the Mona Lisa</p>
+                                    </div>
+                                    <div class="timeline-actions">
+                                        <button class="timeline-btn edit-btn" title="Edit attraction"><i class="fas fa-edit"></i></button>
+                                        <button class="timeline-btn delete-btn" title="Remove attraction"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cost Summary -->
+            <section class="planner-section" id="cost-section" data-aos="fade-up" data-aos-delay="600">
+                <h2><i class="fas fa-receipt" style="color: #4ecdc4; margin-right: 10px;"></i>7. Trip Cost Summary</h2>
+                <div class="cost-summary">
+                    <div class="cost-breakdown">
+                        <div class="cost-item">
+                            <span class="cost-label"><i class="fas fa-bed" style="margin-right: 8px;"></i>Accommodation:</span>
+                            <span class="cost-value" id="accommodation-cost">₹ 105,000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label"><i class="fas fa-car" style="margin-right: 8px;"></i>Transportation:</span>
+                            <span class="cost-value" id="transportation-cost">₹ 13,500</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label"><i class="fas fa-monument" style="margin-right: 8px;"></i>Attractions:</span>
+                            <span class="cost-value" id="attractions-cost">₹ 5,500</span>
+                        </div>
+                        <div class="cost-item total-cost">
+                            <span class="cost-label"><i class="fas fa-calculator" style="margin-right: 8px;"></i>Total Cost:</span>
+                            <span class="cost-value" id="total-cost">₹ 124,000</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Save and Book -->
+            <section class="planner-section" id="save-section" data-aos="fade-up" data-aos-delay="700">
+                <div class="save-itinerary">
+                    <input type="text" id="itinerary-name" class="planner-input" placeholder="Name your itinerary (e.g. Dream Paris Vacation)">
+                    <div class="save-itinerary-buttons">
+                        <button id="save-btn" class="btn btn-primary"><i class="fas fa-save" style="margin-right: 8px;"></i>Save Itinerary</button>
+                        <button id="book-btn" class="btn btn-secondary"><i class="fas fa-check-circle" style="margin-right: 8px;"></i>Book This Trip</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Saved Itineraries (when logged in) -->
+        <section class="planner-section" id="saved-itineraries-section" data-aos="fade-up" data-aos-delay="800">
+            <h2><i class="fas fa-bookmark" style="color: #ffbe0b; margin-right: 10px;"></i>Your Saved Itineraries</h2>
+            <div class="saved-itineraries">
+                <div class="loading-spinner" id="saved-itineraries-loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading your saved itineraries...
+                </div>
+                <div id="saved-itineraries-list">
+                    <!-- Sample saved itineraries for visual preview -->
+                    <div class="saved-itinerary-card">
+                        <div class="itinerary-header">
+                            <h3 class="itinerary-title">Paris Adventure</h3>
+                            <span class="itinerary-status status-draft">Draft</span>
+                        </div>
+                        <div class="itinerary-details">
+                            <div class="itinerary-detail"><i class="fas fa-map-marker-alt"></i> Paris, France</div>
+                            <div class="itinerary-detail"><i class="far fa-calendar-alt"></i> May 15 - May 20, 2024</div>
+                            <div class="itinerary-detail"><i class="fas fa-bed"></i> Le Meurice</div>
+                            <div class="itinerary-detail"><i class="fas fa-wallet"></i> ₹ 124,000</div>
+                        </div>
+                        <div class="itinerary-actions">
+                            <button class="itinerary-btn view-btn"><i class="fas fa-eye"></i> View</button>
+                            <button class="itinerary-btn edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="itinerary-btn book-btn"><i class="fas fa-check-circle"></i> Book</button>
+                        </div>
+                    </div>
+                    <div class="saved-itinerary-card">
+                        <div class="itinerary-header">
+                            <h3 class="itinerary-title">Tokyo Explorer</h3>
+                            <span class="itinerary-status status-finalized">Finalized</span>
+                        </div>
+                        <div class="itinerary-details">
+                            <div class="itinerary-detail"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</div>
+                            <div class="itinerary-detail"><i class="far fa-calendar-alt"></i> June 10 - June 17, 2024</div>
+                            <div class="itinerary-detail"><i class="fas fa-bed"></i> Park Hyatt Tokyo</div>
+                            <div class="itinerary-detail"><i class="fas fa-wallet"></i> ₹ 210,000</div>
+                        </div>
+                        <div class="itinerary-actions">
+                            <button class="itinerary-btn view-btn"><i class="fas fa-eye"></i> View</button>
+                            <button class="itinerary-btn edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="itinerary-btn book-btn"><i class="fas fa-check-circle"></i> Book</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- Company Info Column -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #ff6b6b, #4ecdc4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                            <i class="fas fa-plane-departure" style="color: white; font-size: 20px;"></i>
+                        </div>
+                        <h3>Go Trip</h3>
+                    </div>
+                    <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="trip-planner.html">Trip Planner</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tours & Destinations -->
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destination-paris.html">Paris, France</a></li>
+                        <li><a href="destination-tokyo.html">Tokyo, Japan</a></li>
+                        <li><a href="destination-switzerland.html">Switzerland</a></li>
+                        <li><a href="destination-canada.html">Canada</a></li>
+                        <li><a href="destination-korea.html">South Korea</a></li>
+                        <li><a href="destination-monaco.html">Monaco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> G.P PURNEA</li>
+                        <li><i class="fas fa-phone"></i> +91 9473452441</li>
+                        <li><i class="fas fa-envelope"></i> info@gotrip.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS animations
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+    <script src="../sounds/notification.js"></script>
+    <script src="../js/travel-alerts.js"></script>
+    <script src="../js/trip-planner.js"></script>
+    
+</body>
+</html> 

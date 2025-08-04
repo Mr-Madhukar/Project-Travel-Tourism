@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monaco - Go Trip</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/destination.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My
+                    Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Destination Header -->
+    <section class="destination-header destination-page" style="background-image: url(../image/monaco.jpg);" data-destination-id="6">
+        <div class="destination-overlay"></div>
+        <div class="destination-title">
+            <h1>Luxurious Monaco</h1>
+            <p>Experience glamour, elegance and Mediterranean beauty in this prestigious principality</p>
+        </div>
+    </section>
+
+    <!-- Destination Overview -->
+    <section class="destination-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Why Visit Monaco?</h2>
+                    <p>Monaco, the second-smallest country in the world, packs an incredible amount of luxury and
+                        glamour into its 2.02 km² area. This Mediterranean paradise is renowned for its stunning coastal
+                        views, prestigious casino, Formula 1 Grand Prix, and elite lifestyle. From royal palaces to
+                        superyacht-filled harbors, Monaco offers a glimpse into the world of luxury that few places can
+                        match.</p>
+
+                    <div class="overview-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">🏎️</span>
+                            <h3>Motorsport Heritage</h3>
+                            <p>Home to the legendary Monaco Grand Prix, one of the most prestigious races in motorsport
+                            </p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🎰</span>
+                            <h3>Casino Royale</h3>
+                            <p>Experience the glamorous Monte Carlo Casino, a gem of Belle Époque architecture</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">👑</span>
+                            <h3>Royal History</h3>
+                            <p>Discover the fascinating history of the Grimaldi family and their royal palace</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">⛵</span>
+                            <h3>Mediterranean Luxury</h3>
+                            <p>Marvel at luxury yachts, pristine beaches, and spectacular coastal views</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-details">
+                    <div class="detail-box">
+                        <h3>Best Time to Visit</h3>
+                        <p>Spring (April-May) for the Grand Prix and pleasant weather</p>
+                        <p>Summer (June-August) for perfect Mediterranean climate</p>
+                        <p>Fall (September-October) for fewer crowds and warm waters</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Language</h3>
+                        <p>French (official language)</p>
+                        <p>Italian and English widely spoken</p>
+                        <p>Monégasque (traditional local language)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Currency</h3>
+                        <p>Euro (€)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Stay Updated</h3>
+                        <button class="enable-notifications"><i class="fas fa-bell"></i> Get Monaco Travel
+                            Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-places">
+        <div class="container">
+            <h2>Top Tourist Destinations in Monaco</h2>
+            <div class="places-grid">
+                <div class="place-card" data-aos="fade-up">
+                    <div class="place-img">
+                        <img src="https://frenchriviera.travel/wp-content/uploads/2018/03/Monte-Carlo-Casino1.jpg" alt="Monte Carlo Casino">
+                    </div>
+                    <div class="place-info">
+                        <h3>Monte Carlo Casino</h3>
+                        <p>World-famous gambling complex with opulent architecture and elegant gardens</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="place-img">
+                        <img src="https://thumbs.dreamstime.com/b/palace-prince-monaco-206098065.jpg" alt="Prince's Palace">
+                    </div>
+                    <div class="place-info">
+                        <h3>Prince's Palace of Monaco</h3>
+                        <p>Official residence of the Sovereign Prince, offering guided tours and stunning views</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1614094082869-cd4e4b2905c7?q=80&w=1000&auto=format&fit=crop" alt="Oceanographic Museum">
+                    </div>
+                    <div class="place-info">
+                        <h3>Oceanographic Museum</h3>
+                        <p>Historic marine science museum with aquariums and collections founded by Prince Albert I</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="place-img">
+                        <img src="https://images.pexels.com/photos/11892307/pexels-photo-11892307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Port Hercules">
+                    </div>
+                    <div class="place-info">
+                        <h3>Port Hercules</h3>
+                        <p>Natural deep-water port filled with luxury yachts and cruise ships</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 1-2 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="place-img">
+                        <img src="https://thumbs.dreamstime.com/b/japanese-garden-monte-carlo-monaco-55874730.jpg" alt="Japanese Garden">
+                    </div>
+                    <div class="place-info">
+                        <h3>Japanese Garden</h3>
+                        <p>Serene garden designed following Zen principles with waterfalls and traditional features</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 1 hour</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="place-img">
+                        <img src="https://c8.alamy.com/comp/2CJGM23/formula-one-f1-monaco-grand-prix-circuit-de-monaco-monte-carlo-monaco-may-26-2019-general-view-during-the-race-reutersbenoit-tessier-2CJGM23.jpg" alt="Circuit de Monaco">
+                    </div>
+                    <div class="place-info">
+                        <h3>Formula 1 Monaco Circuit</h3>
+                        <p>The legendary street circuit that hosts the annual Monaco Grand Prix</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2 hours (walking tour)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Packages -->
+    <section class="trip-packages">
+        <div class="container">
+            <h2>Monaco Tour Packages</h2>
+            <p class="section-intro">Choose from our exclusive travel packages designed to give you the ultimate Monaco
+                luxury experience</p>
+
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <div class="package-header">
+                        <h3>Monaco Elegance</h3>
+                        <span class="package-price">₹89,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 4 Days</span>
+                            <span>👥 Max Group Size: 8</span>
+                            <span>🏨 4 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Nice Airport, Transfer to Monaco, Welcome Dinner
+                                </li>
+                                <li><strong>Day 2:</strong> Monte Carlo Casino, Café de Paris, Japanese Garden</li>
+                                <li><strong>Day 3:</strong> Prince's Palace, Cathedral, Oceanographic Museum</li>
+                                <li><strong>Day 4:</strong> Exotic Garden, Free time for shopping, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ 3 nights accommodation</li>
+                                <li>✓ Daily breakfast, welcome dinner</li>
+                                <li>✓ Entrance fees to main attractions</li>
+                                <li>✓ Airport transfers</li>
+                                <li>✓ Guided walking tours</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Monaco" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-header">
+                        <h3>Monaco Grand Prix Special</h3>
+                        <span class="package-price">₹1,99,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 5 Days</span>
+                            <span>👥 Max Group Size: 6</span>
+                            <span>🏨 5 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival, Luxury Hotel Check-in, Circuit Orientation Walk
+                                </li>
+                                <li><strong>Day 2:</strong> F1 Practice Sessions Viewing, Monte Carlo Evening</li>
+                                <li><strong>Day 3:</strong> F1 Qualifying Session, Yacht Party Experience</li>
+                                <li><strong>Day 4:</strong> Monaco Grand Prix Race Day with Premium Seating</li>
+                                <li><strong>Day 5:</strong> Leisure Day, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Luxury accommodation</li>
+                                <li>✓ All breakfasts and selected gourmet meals</li>
+                                <li>✓ Premium Grand Prix tickets</li>
+                                <li>✓ Exclusive yacht party invitation</li>
+                                <li>✓ VIP transfers throughout stay</li>
+                                <li>✓ Monaco Grand Prix memorabilia</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Monaco%20Grand%20Prix" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-header">
+                        <h3>French Riviera Luxury</h3>
+                        <span class="package-price">₹1,49,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 7 Days</span>
+                            <span>👥 Max Group Size: 8</span>
+                            <span>🏨 5 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Nice, Welcome Dinner</li>
+                                <li><strong>Day 2:</strong> Nice Exploration, Promenade des Anglais</li>
+                                <li><strong>Day 3:</strong> Transfer to Monaco, Monte Carlo Casino</li>
+                                <li><strong>Day 4:</strong> Monaco Royal Palace, Oceanographic Museum</li>
+                                <li><strong>Day 5:</strong> Day Trip to Cannes and Antibes</li>
+                                <li><strong>Day 6:</strong> Saint-Tropez Excursion, Luxury Beach Club</li>
+                                <li><strong>Day 7:</strong> Return to Nice, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Luxury accommodations throughout</li>
+                                <li>✓ Daily breakfast, 3 gourmet dinners</li>
+                                <li>✓ Private transfers between destinations</li>
+                                <li>✓ Guided tours in each location</li>
+                                <li>✓ Luxury yacht cruise along the coast</li>
+                                <li>✓ Beach club day pass in Saint-Tropez</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=French%20Riviera%20Luxury" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips">
+        <div class="container">
+            <h2>Travel Tips for Monaco</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <div class="tip-icon">💰</div>
+                    <h3>Budget Accordingly</h3>
+                    <p>Monaco is one of the world's most expensive destinations. Plan your budget generously, especially
+                        for dining and accommodation.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-icon">👔</div>
+                    <h3>Dress Code</h3>
+                    <p>Many venues, especially the Casino, have strict dress codes. Pack smart-casual and formal attire
+                        for evenings.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-icon">🚶</div>
+                    <h3>Walking Friendly</h3>
+                    <p>Despite its hilly terrain, Monaco is small enough to explore on foot. Wear comfortable shoes but
+                        be prepared for stairs and slopes.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-icon">📅</div>
+                    <h3>Seasonal Planning</h3>
+                    <p>If visiting during the Grand Prix (May), book accommodation at least a year in advance as prices
+                        soar and availability becomes scarce.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience Monaco?</h2>
+            <p>Book your dream luxury getaway today and create memories that will last a lifetime.</p>
+            <a href="book.html?destination=Monaco" class="cta-button">Book Your Trip Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                        </ul>
+                        <form class="footer-newsletter-form">
+                            <h3>Newsletter</h3>
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Your Email" required>
+                                <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+
+                    // Redirect to home page
+                    window.location.href = '../index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                });
+        }
+    </script>
+
+    <!-- Travel Alerts Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Set the path for travel alerts JSON
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+
+    <!-- Back to Top Button JavaScript -->
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+
+</html>

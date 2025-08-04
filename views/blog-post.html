@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Breathtaking Mountain Destinations - Go Trip</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Satisfy&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        /* Blog Post Specific Styles */
+        .blog-post-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .blog-post-header {
+            margin-bottom: 30px;
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-meta .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .blog-post-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            color: #191d34;
+            margin-bottom: 20px;
+        }
+        
+        .blog-post-featured-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .blog-post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-post-content h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            color: #191d34;
+            margin: 40px 0 20px;
+        }
+        
+        .blog-post-content h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            color: #191d34;
+            margin: 30px 0 15px;
+        }
+        
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+        
+        .blog-post-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .blog-post-content blockquote {
+            border-left: 4px solid #ffaa00;
+            padding-left: 20px;
+            font-style: italic;
+            margin: 30px 0;
+            color: #555;
+        }
+        
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 40px 0;
+        }
+        
+        .blog-post-tags a {
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post-tags a:hover {
+            background-color: #ffaa00;
+            color: #fff;
+        }
+        
+        .blog-post-share {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-post-share span {
+            font-weight: 600;
+        }
+        
+        .blog-post-share a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post-share a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .blog-post-share a.facebook:hover {
+            background-color: #1877F2;
+            color: #fff;
+        }
+        
+        .blog-post-share a.twitter:hover {
+            background-color: #1DA1F2;
+            color: #fff;
+        }
+        
+        .blog-post-share a.pinterest:hover {
+            background-color: #E60023;
+            color: #fff;
+        }
+        
+        .blog-post-share a.linkedin:hover {
+            background-color: #0077B5;
+            color: #fff;
+        }
+        
+        .author-bio {
+            display: flex;
+            gap: 20px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .author-bio-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-bio-info h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .author-bio-info p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .author-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .author-social a {
+            color: #555;
+            transition: color 0.3s ease;
+        }
+        
+        .author-social a:hover {
+            color: #ffaa00;
+        }
+        
+        .related-posts-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            color: #191d34;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .related-posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .blog-post-featured-img {
+                height: 300px;
+            }
+            
+            .author-bio {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .author-social {
+                justify-content: center;
+            }
+            
+            .related-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <div class="blog-post-container">
+        <article class="blog-post">
+            <header class="blog-post-header">
+                <div class="blog-post-meta">
+                    <div class="author">
+                        <img src="../image/author.jpg" alt="Author" class="author-avatar">
+                        <span>By Emma Watson</span>
+                    </div>
+                    <div class="date"><i class="far fa-calendar"></i> June 15, 2024</div>
+                    <div class="read-time"><i class="far fa-clock"></i> 8 min read</div>
+                    <div class="category">Adventure</div>
+                </div>
+                <h1 class="blog-post-title">10 Breathtaking Mountain Destinations You Must Visit</h1>
+            </header>
+            
+            <img src="../image/mountains.jpg" alt="Mountain landscape" class="blog-post-featured-img">
+            
+            <div class="blog-post-content">
+                <p>There's something magical about mountains that captivates the human spirit. Perhaps it's their towering presence against the sky, the clean, crisp air, or the sense of accomplishment when you reach a summit and gaze out at the world below. Whatever draws you to the mountains, there's no denying their power to inspire awe and wonder.</p>
+                
+                <p>In this article, we'll explore ten of the most breathtaking mountain destinations around the world, each offering a unique experience for travelers seeking adventure, tranquility, or simply a connection with nature's grandeur.</p>
+                
+                <h2>1. The Swiss Alps, Switzerland</h2>
+                <p>The Swiss Alps need little introduction. This iconic mountain range stretches across Switzerland, offering some of the most picturesque landscapes on the planet. From the famous Matterhorn peak to the charming village of Zermatt, the Swiss Alps combine natural beauty with Swiss precision and hospitality.</p>
+                
+                <p>Whether you're an experienced skier looking for world-class slopes or a casual hiker seeking panoramic views, the Swiss Alps deliver unforgettable experiences year-round. The efficient train system makes it easy to travel between mountain villages, and cable cars provide access to stunning viewpoints without the need for strenuous hiking.</p>
+                
+                <h3>Best Time to Visit:</h3>
+                <p>December to April for winter sports, June to September for hiking and summer activities.</p>
+                
+                <h2>2. The Canadian Rockies, Canada</h2>
+                <p>The Canadian Rockies stretch across Alberta and British Columbia, encompassing five national parks that showcase Canada's pristine wilderness. Banff and Jasper National Parks are the most famous, featuring turquoise lakes, dense forests, and jagged mountain peaks.</p>
+                
+                <p>The Icefields Parkway, a scenic drive connecting Banff and Jasper, is considered one of the most beautiful road trips in the world. Along the way, you'll encounter wildlife such as elk, moose, and bears, as well as natural wonders like the Columbia Icefield.</p>
+                
+                <h3>Best Time to Visit:</h3>
+                <p>June to September for hiking and wildlife viewing, December to March for skiing and winter landscapes.</p>
+                
+                <h2>3. The Himalayas, Nepal</h2>
+                <p>Home to the world's highest peak, Mount Everest, the Himalayan range in Nepal offers the ultimate mountain experience. While summiting Everest requires extensive training and resources, there are numerous trekking routes suitable for various fitness levels.</p>
+                
+                <p>The Annapurna Circuit and Everest Base Camp Trek are popular choices, taking you through remote villages, ancient monasteries, and breathtaking high-altitude landscapes. Beyond the physical challenge, trekking in the Himalayas provides insight into the unique cultures of the mountain communities.</p>
+                
+                <blockquote>"The mountains are calling and I must go." - John Muir</blockquote>
+                
+                <h3>Best Time to Visit:</h3>
+                <p>October to November and March to April for the clearest skies and moderate temperatures.</p>
+                
+                <h2>4. Patagonia, Argentina and Chile</h2>
+                <p>Straddling the border between Argentina and Chile, Patagonia features some of the most dramatic mountain scenery on Earth. Torres del Paine National Park in Chile and Los Glaciares National Park in Argentina are the crown jewels, with their granite spires, massive glaciers, and pristine lakes.</p>
+                
+                <p>Patagonia is a paradise for outdoor enthusiasts, offering world-class hiking, climbing, and wildlife watching opportunities. The region's remoteness adds to its charm, providing a sense of true wilderness that's increasingly rare in today's interconnected world.</p>
+                
+                <h3>Best Time to Visit:</h3>
+                <p>November to March (summer in the Southern Hemisphere) for milder weather and longer daylight hours.</p>
+                
+                <h2>5. The Dolomites, Italy</h2>
+                <p>The Dolomites in northeastern Italy combine Alpine grandeur with Italian charm. These distinctive pale mountains rise dramatically from green valleys, creating a landscape that seems almost too perfect to be real. The region is a UNESCO World Heritage site, recognized for both its natural beauty and cultural significance.</p>
+                
+                <p>In winter, the Dolomites offer excellent skiing, while summer brings opportunities for hiking, mountain biking, and via ferrata (protected climbing routes). After a day of outdoor activities, unwind in charming mountain towns and enjoy the unique blend of Italian and Austrian cuisines that characterizes this border region.</p>
+                
+                <h3>Best Time to Visit:</h3>
+                <p>December to March for skiing, June to September for hiking and summer activities.</p>
+                
+                <p>Whether you're seeking adventure, tranquility, or cultural experiences, these mountain destinations offer something for every traveler. Remember to respect the natural environment, prepare adequately for mountain conditions, and immerse yourself in the unique experience that only mountains can provide.</p>
+                
+                <p>Have you visited any of these mountain destinations? Or do you have other favorites that didn't make our list? Share your experiences and recommendations in the comments below!</p>
+            </div>
+            
+            <div class="blog-post-tags">
+                <a href="#">Mountains</a>
+                <a href="#">Adventure Travel</a>
+                <a href="#">Hiking</a>
+                <a href="#">Nature</a>
+                <a href="#">Outdoor Activities</a>
+            </div>
+            
+            <div class="blog-post-share">
+                <span>Share this article:</span>
+                <a href="#" class="facebook" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="twitter" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="pinterest" aria-label="Share on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" class="linkedin" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <div class="author-bio">
+                <img src="../image/author.jpg" alt="Emma Watson" class="author-bio-img">
+                <div class="author-bio-info">
+                    <h3>Emma Watson</h3>
+                    <p>Emma is an adventure travel writer and photographer with a passion for mountains and outdoor exploration. She has hiked in over 30 countries and is constantly seeking new adventures to share with her readers.</p>
+                    <div class="author-social">
+                        <a href="#" aria-label="Author's Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Author's Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Author's Website"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <h2 class="related-posts-title">Related Articles</h2>
+        <div class="related-posts">
+            <!-- Related Post 1 -->
+            <article class="article-card">
+                <div class="article-img">
+                    <img src="../image/switzerland.png" alt="Swiss Alps">
+                    <div class="article-category">Adventure</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar"></i> June 5, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                    </div>
+                    <h3>Hiking the Swiss Alps: Routes for Every Experience Level</h3>
+                    <p>From gentle valley trails to challenging mountain passes, Switzerland offers hiking experiences for everyone from beginners to seasoned trekkers.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            
+            <!-- Related Post 2 -->
+            <article class="article-card">
+                <div class="article-img">
+                    <img src="../image/canada.png" alt="Canadian Rockies">
+                    <div class="article-category">Destinations</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar"></i> June 10, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h3>Exploring Canada's Hidden Natural Wonders</h3>
+                    <p>Beyond the famous Banff and Jasper National Parks, Canada boasts countless lesser-known natural treasures waiting to be discovered.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            
+            <!-- Related Post 3 -->
+            <article class="article-card">
+                <div class="article-img">
+                    <img src="../image/korea.png" alt="Mountain temple">
+                    <div class="article-category">Culture</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-date"><i class="far fa-calendar"></i> May 29, 2024</span>
+                        <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h3>Temple Stay in South Korea: A Journey to Inner Peace</h3>
+                    <p>Experience traditional Korean Buddhist culture with an immersive temple stay program that offers meditation, temple cuisine, and ancient rituals.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" data-aos="fade-up">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- Company Info Column -->
+                <div class="footer-column">
+                    <h3>Go Trip</h3>
+                    <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tours & Destinations -->
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destination-paris.html">Paris, France</a></li>
+                        <li><a href="destination-tokyo.html">Tokyo, Japan</a></li>
+                        <li><a href="destination-switzerland.html">Switzerland</a></li>
+                        <li><a href="destination-canada.html">Canada</a></li>
+                        <li><a href="destination-korea.html">South Korea</a></li>
+                        <li><a href="destination-monaco.html">Monaco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Lane, Adventure City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@gotrip.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Check if user is logged in (Same as on index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canada - Go Trip</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/destination.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Destination Header -->
+    <section class="destination-header destination-page" style="background-image: url(../image/canada.png);" data-destination-id="1">
+        <div class="destination-overlay"></div>
+        <div class="destination-title">
+            <h1>Majestic Canada</h1>
+            <p>Experience breathtaking natural beauty, vibrant cities, and warm hospitality</p>
+        </div>
+    </section>
+
+    <!-- Destination Overview -->
+    <section class="destination-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Why Visit Canada?</h2>
+                    <p>Canada is a land of breathtaking natural beauty, diverse cultures, and friendly people. From the stunning Rocky Mountains to the picturesque coastlines, and from bustling cosmopolitan cities to serene natural parks, Canada offers something for every traveler.</p>
+                    
+                    <div class="overview-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">🍁</span>
+                            <h3>Natural Beauty</h3>
+                            <p>Explore stunning national parks, pristine lakes, and majestic mountains</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🏙️</span>
+                            <h3>Vibrant Cities</h3>
+                            <p>Experience multicultural metropolises with amazing food and culture</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🏂</span>
+                            <h3>Adventure</h3>
+                            <p>Enjoy skiing, hiking, wildlife watching and countless outdoor activities</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🥘</span>
+                            <h3>Cuisine</h3>
+                            <p>Savor diverse culinary experiences from poutine to maple delicacies</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-details">
+                    <div class="detail-box">
+                        <h3>Best Time to Visit</h3>
+                        <p>Summer (June-August) for warm weather and outdoor activities</p>
+                        <p>Fall (September-October) for beautiful autumn colors</p>
+                        <p>Winter (December-February) for skiing and winter sports</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Language</h3>
+                        <p>English and French (official languages)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Currency</h3>
+                        <p>Canadian Dollar (CAD)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Stay Updated</h3>
+                        <button class="enable-notifications"><i class="fas fa-bell"></i> Get Canada Travel Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-places">
+        <div class="container">
+            <h2>Top Tourist Destinations in Canada</h2>
+            <div class="places-grid">
+                <div class="place-card" data-aos="fade-up">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?q=80&w=1000&auto=format&fit=crop" alt="CN Tower, Toronto">
+                    </div>
+                    <div class="place-info">
+                        <h3>Toronto</h3>
+                        <p>Canada's largest city with CN Tower, diverse neighborhoods, and vibrant culture</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1560813962-ff3d8fcf59ba?q=80&w=1000&auto=format&fit=crop" alt="Vancouver">
+                    </div>
+                    <div class="place-info">
+                        <h3>Vancouver</h3>
+                        <p>Stunning coastal city surrounded by mountains, beaches, and Stanley Park</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="place-img">
+                        <img src="https://3.bp.blogspot.com/-7dpYZAKjYhg/V1qjHjIJArI/AAAAAAACLVw/xVyfScLAKT0QCOAPtXJsd4o46M5jwkGzwCLcB/s1600/1.jpg" alt="Banff National Park">
+                    </div>
+                    <div class="place-info">
+                        <h3>Banff National Park</h3>
+                        <p>Breathtaking mountain scenery, glacial lakes, and abundant wildlife</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 4-5 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="place-img">
+                        <img src="https://assets.voxcity.com/uploads/product_image/Niagara-Falls-Walking-Tour-image-2_gallery.jpg" alt="Niagara Falls">
+                    </div>
+                    <div class="place-info">
+                        <h3>Niagara Falls</h3>
+                        <p>Majestic waterfalls and exciting attractions at the US-Canada border</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 1-2 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="place-img">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.HNZuJBsPn_jvKJ5uY046lwHaE7?cb=iwc1&rs=1&pid=ImgDetMain" alt="Montreal">
+                    </div>
+                    <div class="place-info">
+                        <h3>Montreal</h3>
+                        <p>European charm with French-Canadian culture, historic neighborhoods, and festivals</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 days</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="place-img">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.5W0enGG7f5rTMeqg-q3fwAHaE8?cb=iwc1&rs=1&pid=ImgDetMain" alt="Quebec City">
+                    </div>
+                    <div class="place-info">
+                        <h3>Quebec City</h3>
+                        <p>Old-world charm with cobblestone streets, historic architecture, and French influence</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Packages -->
+    <section class="trip-packages">
+        <div class="container">
+            <h2>Canada Tour Packages</h2>
+            <p class="section-intro">Choose from our carefully crafted travel packages designed to give you the best Canadian experience</p>
+            
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <div class="package-header">
+                        <h3>Eastern Canada Explorer</h3>
+                        <span class="package-price">₹99,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 7 Days</span>
+                            <span>👥 Max Group Size: 12</span>
+                            <span>🏨 4 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Toronto, Welcome Dinner</li>
+                                <li><strong>Day 2:</strong> Toronto City Tour, CN Tower</li>
+                                <li><strong>Day 3:</strong> Niagara Falls Day Trip</li>
+                                <li><strong>Day 4:</strong> Travel to Ottawa, Parliament Hill Tour</li>
+                                <li><strong>Day 5:</strong> Montreal Exploration</li>
+                                <li><strong>Day 6:</strong> Quebec City Day Trip</li>
+                                <li><strong>Day 7:</strong> Return to Toronto, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ All accommodation</li>
+                                <li>✓ Transportation between cities</li>
+                                <li>✓ Daily breakfast, select dinners</li>
+                                <li>✓ Guided tours in each city</li>
+                                <li>✓ Niagara Falls boat tour</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Eastern%20Canada%20Explorer" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-header">
+                        <h3>Rocky Mountain Adventure</h3>
+                        <span class="package-price">₹1,29,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 10 Days</span>
+                            <span>👥 Max Group Size: 10</span>
+                            <span>🏨 4 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Vancouver, Welcome Dinner</li>
+                                <li><strong>Day 2:</strong> Vancouver City Tour</li>
+                                <li><strong>Day 3:</strong> Stanley Park and Granville Island</li>
+                                <li><strong>Day 4:</strong> Travel to Whistler</li>
+                                <li><strong>Day 5:</strong> Whistler Adventures</li>
+                                <li><strong>Day 6:</strong> Travel to Banff National Park</li>
+                                <li><strong>Day 7:</strong> Banff Exploration</li>
+                                <li><strong>Day 8:</strong> Lake Louise Day Trip</li>
+                                <li><strong>Day 9:</strong> Jasper National Park</li>
+                                <li><strong>Day 10:</strong> Return to Vancouver, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ All accommodation</li>
+                                <li>✓ Transportation between destinations</li>
+                                <li>✓ Daily breakfast, select lunches and dinners</li>
+                                <li>✓ Guided hiking tours</li>
+                                <li>✓ National Park entrance fees</li>
+                                <li>✓ Gondola ride in Banff</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Rocky%20Mountain%20Adventure" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-header">
+                        <h3>Canadian Winter Magic</h3>
+                        <span class="package-price">₹1,49,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 8 Days</span>
+                            <span>👥 Max Group Size: 8</span>
+                            <span>🏨 5 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Quebec City</li>
+                                <li><strong>Day 2:</strong> Quebec City Winter Tour, Ice Hotel Visit</li>
+                                <li><strong>Day 3:</strong> Dog Sledding Adventure</li>
+                                <li><strong>Day 4:</strong> Travel to Mont-Tremblant</li>
+                                <li><strong>Day 5:</strong> Skiing/Snowboarding Day</li>
+                                <li><strong>Day 6:</strong> Montreal Winter Festival</li>
+                                <li><strong>Day 7:</strong> Spa Day and Winter Activities</li>
+                                <li><strong>Day 8:</strong> Return to Quebec City, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Luxury accommodation</li>
+                                <li>✓ Transportation between destinations</li>
+                                <li>✓ All meals included</li>
+                                <li>✓ Dog sledding experience</li>
+                                <li>✓ Ski/snowboard equipment rental</li>
+                                <li>✓ Spa treatment</li>
+                                <li>✓ Ice Hotel tour</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Canadian%20Winter%20Magic" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips">
+        <div class="container">
+            <h2>Travel Tips for Canada</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <div class="tip-icon">🌡️</div>
+                    <h3>Weather Preparation</h3>
+                    <p>Canada's climate varies dramatically by region and season. Pack layers and check the forecast for your specific destinations.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-icon">🛂</div>
+                    <h3>Visa Requirements</h3>
+                    <p>Most visitors need an Electronic Travel Authorization (eTA) or visa. Check requirements well before your trip.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-icon">📱</div>
+                    <h3>Stay Connected</h3>
+                    <p>Consider getting a local SIM card or travel plan for data access, especially in remote areas.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-icon">💰</div>
+                    <h3>Tipping Culture</h3>
+                    <p>Tipping 15-20% is customary in restaurants, taxis, and for services in Canada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Explore Canada?</h2>
+            <p>Book your dream Canadian adventure today and create memories that will last a lifetime.</p>
+            <a href="book.html?destination=Canada" class="cta-button">Book Your Trip Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                        </ul>
+                        <form class="footer-newsletter-form">
+                            <h3>Newsletter</h3>
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Your Email" required>
+                                <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    
+                    // Redirect to home page
+                    window.location.href = '../index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                });
+        }
+    </script>
+    
+    <!-- Travel Alerts Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Set the path for travel alerts JSON
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+
+    <!-- Back to Top Button JavaScript -->
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html> 

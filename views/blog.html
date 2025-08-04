@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog - Go Trip</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Satisfy&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="blog-header-overlay">
+            <div class="blog-header-content" data-aos="fade-up">
+                <h1>Travel Insights & Inspiration</h1>
+                <p>Discover travel tips, destination guides, and stories from around the world</p>
+                <div class="blog-search">
+                    <input type="text" placeholder="Search articles...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Post -->
+    <section class="featured-post" data-aos="fade-up">
+        <div class="container">
+            <div class="featured-post-content">
+                <div class="featured-post-img">
+                    <img src="../image/mountains.jpg" alt="Mountain landscapes">
+                    <div class="featured-post-badge">Featured</div>
+                </div>
+                <div class="featured-post-text">
+                    <div class="post-meta">
+                        <span class="post-category">Adventure</span>
+                        <span class="post-date"><i class="far fa-calendar"></i> June 15, 2024</span>
+                    </div>
+                    <h2>10 Breathtaking Mountain Destinations You Must Visit</h2>
+                    <p>From the majestic Alps to the towering Himalayas, mountain landscapes offer some of the most awe-inspiring views on Earth. In this guide, we explore ten incredible mountain destinations that should be on every traveler's bucket list, along with tips for making the most of your alpine adventure.</p>
+                    <a href="blog-post.html" class="read-more-btn">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Explore by Category</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-mountain"></i></div>
+                    <h3>Adventure</h3>
+                    <p>12 articles</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Food & Cuisine</h3>
+                    <p>8 articles</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3>Beach Getaways</h3>
+                    <p>10 articles</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-city"></i></div>
+                    <h3>City Breaks</h3>
+                    <p>15 articles</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Eco Tourism</h3>
+                    <p>6 articles</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-suitcase"></i></div>
+                    <h3>Travel Tips</h3>
+                    <p>14 articles</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="latest-articles" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/canada.png" alt="Canadian landscapes">
+                        <div class="article-category">Destinations</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> June 10, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>Exploring Canada's Hidden Natural Wonders</h3>
+                        <p>Beyond the famous Banff and Jasper National Parks, Canada boasts countless lesser-known natural treasures waiting to be discovered.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/paris.jpg" alt="Paris streets">
+                        <div class="article-category">City Guides</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> June 8, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>A Local's Guide to Hidden Paris: Beyond the Eiffel Tower</h3>
+                        <p>Discover the authentic side of Paris that most tourists never see - from secret passages to neighborhood cafés where locals gather.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/switzerland.png" alt="Swiss Alps">
+                        <div class="article-category">Adventure</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> June 5, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                        <h3>Hiking the Swiss Alps: Routes for Every Experience Level</h3>
+                        <p>From gentle valley trails to challenging mountain passes, Switzerland offers hiking experiences for everyone from beginners to seasoned trekkers.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/tokyo.jpg" alt="Tokyo street">
+                        <div class="article-category">Food & Cuisine</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> June 2, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h3>Tokyo's Street Food Revolution: What to Eat and Where</h3>
+                        <p>Beyond sushi and ramen, Tokyo's vibrant street food scene offers incredible flavors that tell the story of Japan's culinary evolution.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/korea.png" alt="Korean temple">
+                        <div class="article-category">Culture</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> May 29, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>Temple Stay in South Korea: A Journey to Inner Peace</h3>
+                        <p>Experience traditional Korean Buddhist culture with an immersive temple stay program that offers meditation, temple cuisine, and ancient rituals.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="../image/monaco.jpg" alt="Monaco harbor">
+                        <div class="article-category">Luxury Travel</div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> May 25, 2024</span>
+                            <span class="article-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>Monaco on a Budget: Experiencing Luxury Without Breaking the Bank</h3>
+                        <p>Believe it or not, it's possible to experience the glamour of Monaco without spending a fortune. Here's our guide to affordable luxury.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Topics -->
+    <section class="trending-topics" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Trending Topics</h2>
+            <div class="topics-slider">
+                <a href="#" class="topic-tag">Sustainable Travel</a>
+                <a href="#" class="topic-tag">Digital Nomad</a>
+                <a href="#" class="topic-tag">Solo Adventures</a>
+                <a href="#" class="topic-tag">Family Vacations</a>
+                <a href="#" class="topic-tag">Budget Travel</a>
+                <a href="#" class="topic-tag">Luxury Escapes</a>
+                <a href="#" class="topic-tag">Road Trips</a>
+                <a href="#" class="topic-tag">Cultural Immersion</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" data-aos="fade-up">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Get the latest travel tips, destination guides, and exclusive offers delivered straight to your inbox.</p>
+                </div>
+                <form class="newsletter-form-large">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" required>
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to receive travel updates and offers from Go Trip.</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Reviews Section -->
+    <section class="user-reviews" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Travel Community</h2>
+            
+            <div class="reviews-container">
+                <div class="reviews-left">
+                    <h3>Share Your Experience</h3>
+                    <p>Have you visited one of our destinations? Share your thoughts and help fellow travelers!</p>
+                    
+                    <form class="review-form" id="review-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <select id="destination" name="destination" required>
+                                <option value="">Select a destination</option>
+                                <option value="paris">Paris, France</option>
+                                <option value="tokyo">Tokyo, Japan</option>
+                                <option value="switzerland">Switzerland</option>
+                                <option value="canada">Canada</option>
+                                <option value="korea">South Korea</option>
+                                <option value="monaco">Monaco</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required>
+                                <label for="star5"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="review">Your Review</label>
+                            <textarea id="review" name="review" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="review-submit-btn">Submit Review</button>
+                    </form>
+                </div>
+                
+                <div class="reviews-right">
+                    <h3>Recent Traveler Reviews</h3>
+                    <div class="reviews-list" id="reviews-list">
+                        <!-- Reviews will be loaded dynamically -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../image/user1.jpg" alt="User avatar" class="reviewer-avatar">
+                                    <div>
+                                        <h4>Emma Thompson</h4>
+                                        <p>Paris, France</p>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">"Our trip to Paris was absolutely magical! The guided tour of the Louvre was exceptional, and our hotel had the perfect view of the Eiffel Tower. Can't wait to return!"</p>
+                            <p class="review-date">June 12, 2024</p>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../image/user2.jpg" alt="User avatar" class="reviewer-avatar">
+                                    <div>
+                                        <h4>James Wilson</h4>
+                                        <p>Tokyo, Japan</p>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">"The Tokyo tour was incredible! So many amazing places to see and the food was out of this world. The only downside was that it felt a bit rushed at times."</p>
+                            <p class="review-date">June 8, 2024</p>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../image/user3.jpg" alt="User avatar" class="reviewer-avatar">
+                                    <div>
+                                        <h4>Sophia Garcia</h4>
+                                        <p>Switzerland</p>
+                                    </div>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">"Switzerland exceeded all expectations! The mountain views were breathtaking and the chocolate tour was delightful. Our guide was knowledgeable and friendly. Highly recommend!"</p>
+                            <p class="review-date">May 30, 2024</p>
+                        </div>
+                    </div>
+                    <button class="view-more-btn">View More Reviews</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" data-aos="fade-up">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- Company Info Column -->
+                <div class="footer-column">
+                    <h3>Go Trip</h3>
+                    <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tours & Destinations -->
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destination-paris.html">Paris, France</a></li>
+                        <li><a href="destination-tokyo.html">Tokyo, Japan</a></li>
+                        <li><a href="destination-switzerland.html">Switzerland</a></li>
+                        <li><a href="destination-canada.html">Canada</a></li>
+                        <li><a href="destination-korea.html">South Korea</a></li>
+                        <li><a href="destination-monaco.html">Monaco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i>G.P PURNEA</li>
+                        <li><i class="fas fa-phone"></i> +91 9473452441</li>
+                        <li><i class="fas fa-envelope"></i> info@gotrip.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Check if user is logged in (Same as on index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            // Review form handling
+            const reviewForm = document.getElementById('review-form');
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // If user is not logged in, redirect to login
+                    if (!isLoggedIn) {
+                        alert('Please log in to submit a review');
+                        window.location.href = 'login.html';
+                        return;
+                    }
+                    
+                    // Here you would normally send the review data to a server
+                    alert('Thank you for your review!');
+                    this.reset();
+                });
+            }
+            
+            // Load more articles button
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    // In a real implementation, this would load more articles
+                    this.textContent = 'Loading...';
+                    setTimeout(() => {
+                        this.textContent = 'No more articles';
+                        this.disabled = true;
+                    }, 1500);
+                });
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html>
