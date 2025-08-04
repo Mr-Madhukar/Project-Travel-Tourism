@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours - Go Trip</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tours.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Satisfy&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <style>
+        /* Additional custom styles for more color */
+        .highlight-text {
+            color: #26d0ce;
+            font-weight: bold;
+        }
+        
+        .benefit-item:nth-child(1) { background: linear-gradient(to bottom right, #ffffff, #f0f8ff); }
+        .benefit-item:nth-child(2) { background: linear-gradient(to bottom right, #ffffff, #f0fff0); }
+        .benefit-item:nth-child(3) { background: linear-gradient(to bottom right, #ffffff, #fff0f5); }
+        .benefit-item:nth-child(4) { background: linear-gradient(to bottom right, #ffffff, #fffaf0); }
+        
+        .tour-card:nth-child(odd) .tour-badge { background: linear-gradient(135deg, #ffd900, #ff9500); }
+        .tour-card:nth-child(even) .tour-badge { background: linear-gradient(135deg, #ff9500, #ff5722); }
+        
+        .testimonial {
+            border-left: 4px solid #26d0ce;
+            background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
+        }
+        
+        /* Add some animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tours Banner -->
+    <header class="tours-banner">
+        <div class="banner-content">
+            <h1>Unforgettable Travel Experiences</h1>
+            <p>Discover hand-crafted tours led by expert local guides</p>
+        </div>
+    </header>
+
+    <!-- Tours Section -->
+    <section class="tours-section">
+        <div class="tours-intro" data-aos="fade-up">
+            <h2>Explore Our Tours</h2>
+            <p>Our curated selection of tours offers unique experiences in the world's most fascinating destinations. Each tour is carefully designed to provide <span class="highlight-text">authentic cultural experiences</span>, breathtaking scenery, and unforgettable memories.</p>
+            
+            <div class="tour-filter">
+                <button class="filter-btn active" data-filter="all">All Tours</button>
+                <button class="filter-btn" data-filter="europe">Europe</button>
+                <button class="filter-btn" data-filter="asia">Asia</button>
+                <button class="filter-btn" data-filter="america">America</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+            </div>
+        </div>
+
+        <div class="tour-cards" data-aos="fade-up">
+            <div class="tour-card" data-category="europe cultural">
+                <div class="tour-image">
+                    <img src="../image/paris.jpg" alt="Paris Tour">
+                    <div class="tour-badge">FEATURED</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                        <span>(120 reviews)</span>
+                    </div>
+                    <h3>Paris Cultural Exploration</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> Paris, France</span>
+                        <span><i class="fas fa-calendar-alt"></i> 4 Days</span>
+                        <span><i class="fas fa-users"></i> Max 12 people</span>
+                    </div>
+                    <p class="tour-description">Explore the City of Light with our exclusive 4-day tour, including visits to the Eiffel Tower, Louvre Museum, and a Seine River cruise. Enjoy authentic French cuisine with included wine tastings.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Skip-the-line access to Louvre and Eiffel Tower</li>
+                            <li><i class="fas fa-check"></i> Evening Seine river cruise with dinner</li>
+                            <li><i class="fas fa-check"></i> Guided walk through Montmartre art district</li>
+                            <li><i class="fas fa-check"></i> Wine tasting experience in local bistro</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 1,49,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=paris-cultural" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-category="america adventure">
+                <div class="tour-image">
+                    <img src="../image/canada.png" alt="Canada Tour">
+                    <div class="tour-badge">BESTSELLER</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                        <span>(156 reviews)</span>
+                    </div>
+                    <h3>Canadian Rockies Adventure</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> Alberta, Canada</span>
+                        <span><i class="fas fa-calendar-alt"></i> 5 Days</span>
+                        <span><i class="fas fa-users"></i> Max 10 people</span>
+                    </div>
+                    <p class="tour-description">Discover the natural beauty of Canada with our 5-day adventure tour, featuring visits to Banff National Park, Lake Louise, and Jasper National Park. Experience hiking, wildlife spotting, and breathtaking mountain views.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Guided hike in Banff National Park</li>
+                            <li><i class="fas fa-check"></i> Canoeing on Lake Louise</li>
+                            <li><i class="fas fa-check"></i> Wildlife spotting tour</li>
+                            <li><i class="fas fa-check"></i> Athabasca Glacier ice walk</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 1,99,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=canadian-rockies" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-category="asia cultural">
+                <div class="tour-image">
+                    <img src="../image/tokyo.jpg" alt="Tokyo Tour">
+                    <div class="tour-badge">HOT DEAL</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.7</span>
+                        <span>(98 reviews)</span>
+                    </div>
+                    <h3>Tokyo Traditions & Trends</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-calendar-alt"></i> 5 Days</span>
+                        <span><i class="fas fa-users"></i> Max 8 people</span>
+                    </div>
+                    <p class="tour-description">Experience the blend of tradition and modernity in Tokyo with our 5-day tour, including visits to ancient temples, bustling markets, and high-tech districts. Participate in a tea ceremony and try your hand at sushi making.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Traditional tea ceremony experience</li>
+                            <li><i class="fas fa-check"></i> Sushi-making workshop with master chef</li>
+                            <li><i class="fas fa-check"></i> Meiji Shrine and historical sites tour</li>
+                            <li><i class="fas fa-check"></i> Akihabara Electronics District exploration</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 1,69,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=tokyo-traditions" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-category="europe adventure">
+                <div class="tour-image">
+                    <img src="../image/switzerland.png" alt="Switzerland Tour">
+                    <div class="tour-badge">NEW</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                        <span>(83 reviews)</span>
+                    </div>
+                    <h3>Swiss Alpine Adventure</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> Swiss Alps</span>
+                        <span><i class="fas fa-calendar-alt"></i> 6 Days</span>
+                        <span><i class="fas fa-users"></i> Max 8 people</span>
+                    </div>
+                    <p class="tour-description">Embark on a thrilling adventure in the Swiss Alps with our 6-day tour. Experience hiking, paragliding, and mountain biking against the backdrop of stunning alpine scenery and charming Swiss villages.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Guided glacier hike with certified guides</li>
+                            <li><i class="fas fa-check"></i> Paragliding experience over Alpine valleys</li>
+                            <li><i class="fas fa-check"></i> Mountain biking on scenic trails</li>
+                            <li><i class="fas fa-check"></i> Traditional Swiss cheese and chocolate tasting</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 2,19,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=swiss-alpine" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-category="asia adventure">
+                <div class="tour-image">
+                    <img src="../image/korea.png" alt="Korea Hiking Tour">
+                    <div class="tour-badge">POPULAR</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.6</span>
+                        <span>(64 reviews)</span>
+                    </div>
+                    <h3>Korean Mountain Trails</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> South Korea</span>
+                        <span><i class="fas fa-calendar-alt"></i> 7 Days</span>
+                        <span><i class="fas fa-users"></i> Max 10 people</span>
+                    </div>
+                    <p class="tour-description">Discover the natural beauty and spiritual traditions of Korea on this 7-day hiking tour. Trek through national parks, visit ancient temples, and experience authentic Korean cuisine and culture.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Hiking in Seoraksan National Park</li>
+                            <li><i class="fas fa-check"></i> Temple stay experience with Buddhist monks</li>
+                            <li><i class="fas fa-check"></i> Traditional Korean spa treatment</li>
+                            <li><i class="fas fa-check"></i> Korean cooking class in local home</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 1,79,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=korean-mountains" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-category="europe cultural">
+                <div class="tour-image">
+                    <img src="../image/monaco.jpg" alt="Monaco Luxury Tour">
+                    <div class="tour-badge">LUXURY</div>
+                </div>
+                <div class="tour-content">
+                    <div class="tour-rating">
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                        <span>(47 reviews)</span>
+                    </div>
+                    <h3>Monaco Luxury Experience</h3>
+                    <div class="tour-highlights">
+                        <span><i class="fas fa-map-marker-alt"></i> Monaco</span>
+                        <span><i class="fas fa-calendar-alt"></i> 4 Days</span>
+                        <span><i class="fas fa-users"></i> Max 6 people</span>
+                    </div>
+                    <p class="tour-description">Indulge in the glamour and luxury of Monaco with our exclusive 4-day tour. Experience the world-famous Monte Carlo Casino, yacht excursions, and fine dining at Michelin-starred restaurants.</p>
+                    <div class="tour-features">
+                        <h4>Tour Highlights</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Private yacht cruise along the Riviera</li>
+                            <li><i class="fas fa-check"></i> VIP access to Monte Carlo Casino</li>
+                            <li><i class="fas fa-check"></i> Tour of the Prince's Palace</li>
+                            <li><i class="fas fa-check"></i> Dinner at a Michelin-starred restaurant</li>
+                        </ul>
+                    </div>
+                    <div class="tour-footer">
+                        <div class="tour-price">
+                            <span class="price">₹ 2,49,999</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="book.html?tour=monaco-luxury" class="btn-book-tour">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tour Features Section -->
+        <div class="tour-benefits" data-aos="fade-up">
+            <h2>Why Choose Our Tours?</h2>
+            <div class="benefits-container">
+                <div class="benefit-item floating">
+                    <i class="fas fa-users"></i>
+                    <h3>Small Groups</h3>
+                    <p>Travel with like-minded people in groups limited to 12 travelers for a more personalized experience.</p>
+                </div>
+                <div class="benefit-item floating" style="animation-delay: 0.5s">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Expert Local Guides</h3>
+                    <p>Our experienced local guides share insider knowledge and take you beyond the typical tourist spots.</p>
+                </div>
+                <div class="benefit-item floating" style="animation-delay: 1s">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Responsible Travel</h3>
+                    <p>We partner with local communities and implement sustainable practices to minimize our environmental impact.</p>
+                </div>
+                <div class="benefit-item floating" style="animation-delay: 1.5s">
+                    <i class="fas fa-clock"></i>
+                    <h3>Flexible Pacing</h3>
+                    <p>Our tours balance guided activities with free time, allowing you to explore at your own pace.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="tour-testimonials" data-aos="fade-up">
+            <h2>Traveler Stories</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The Swiss Alpine Adventure was <span class="highlight-text">incredible</span>! Our guide was knowledgeable and passionate, and the paragliding experience was a once-in-a-lifetime thrill. I would highly recommend this tour to anyone seeking adventure in a stunning setting."</p>
+                        <div class="testimonial-author">
+                            <img src="../image/david_chen.jpg" alt="David Chen">
+                            <div>
+                                <h4>David Chen</h4>
+                                <p>Swiss Alpine Adventure, June 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The Tokyo Traditions & Trends tour was the <span class="highlight-text">perfect way</span> to experience Japan for the first time. The tea ceremony and sushi-making class were highlights, and our guide's insights into Japanese culture were fascinating. Can't wait to return!"</p>
+                        <div class="testimonial-author">
+                            <img src="../image/Sophia_Martinez.jpg" alt="Sophia Martinez">
+                            <div>
+                                <h4>Sophia Martinez</h4>
+                                <p>Tokyo Traditions & Trends, April 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta" data-aos="fade-up">
+            <div class="cta-content">
+                <h2>Ready for Your Next Adventure?</h2>
+                <p>Book your tour today and embark on a journey of a lifetime</p>
+                <a href="contact.html" class="btn-contact">Contact Our Travel Experts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Main Footer -->
+        <div class="footer-main">
+            <div class="footer-column">
+                <h3>About Go Trip</h3>
+                <p>We are a premium travel agency specializing in handcrafted travel experiences to the world's most amazing destinations.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/gortip13?igsh=N3VscnFzaDR5MGd2"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Travel Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> G.P.Purnea</p>
+                <p><i class="fas fa-phone"></i> +91 9473452441</p>
+                <p><i class="fas fa-envelope"></i> madhukartrial@gmail.com</p>
+            </div>
+        </div>
+        
+        <!-- Copyright Section -->
+        <div class="copyright">
+            <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+            });
+            
+            // Tour filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const tourCards = document.querySelectorAll('.tour-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    tourCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (filter === 'all' || categories.includes(filter)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+                
+                // Add username to book now links
+                const bookNowBtns = document.querySelectorAll('.btn-book-tour');
+                const username = localStorage.getItem('username');
+                bookNowBtns.forEach(btn => {
+                    const href = btn.getAttribute('href');
+                    btn.setAttribute('href', `${href}&username=${encodeURIComponent(username)}`);
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+                
+                // Update book now buttons to redirect to login
+                const bookNowBtns = document.querySelectorAll('.btn-book-tour');
+                bookNowBtns.forEach(btn => {
+                    const tourUrl = btn.getAttribute('href');
+                    btn.setAttribute('href', `login.html?return=${encodeURIComponent(tourUrl)}`);
+                });
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html>

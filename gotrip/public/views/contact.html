@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contact Us - Go Trip</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="../css/contact.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Satisfy&family=Roboto:wght@300&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+   <style>
+       /* Alert styles */
+       .alert {
+           padding: 15px;
+           margin-bottom: 20px;
+           border: 1px solid transparent;
+           border-radius: 4px;
+           opacity: 1;
+           transition: opacity 0.5s ease-in-out;
+       }
+       
+       .alert-success {
+           color: #155724;
+           background-color: #d4edda;
+           border-color: #c3e6cb;
+       }
+       
+       .alert-danger {
+           color: #721c24;
+           background-color: #f8d7da;
+           border-color: #f5c6cb;
+       }
+       
+       /* Additional custom styles for more color */
+       .highlight-text {
+           color: #26d0ce;
+           font-weight: bold;
+       }
+       
+       @keyframes float {
+           0% { transform: translateY(0px); }
+           50% { transform: translateY(-10px); }
+           100% { transform: translateY(0px); }
+       }
+       
+       .floating {
+           animation: float 4s ease-in-out infinite;
+       }
+       
+       .contact-info ul li:nth-child(1) { animation-delay: 0.1s; }
+       .contact-info ul li:nth-child(2) { animation-delay: 0.3s; }
+       .contact-info ul li:nth-child(3) { animation-delay: 0.5s; }
+       
+       .contact-method {
+           background: linear-gradient(to bottom right, #ffffff, #f0f9ff);
+           padding: 25px;
+           border-radius: 15px;
+           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+           border: 1px solid rgba(0, 0, 0, 0.03);
+           transition: all 0.3s ease;
+           text-align: center;
+           margin-bottom: 20px;
+       }
+       
+       .contact-method:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 15px 30px rgba(26, 41, 128, 0.1);
+       }
+       
+       .contact-method i {
+           font-size: 40px;
+           color: #26d0ce;
+           margin-bottom: 15px;
+       }
+       
+       .contact-method h3 {
+           font-size: 22px;
+           font-family: 'Barlow Condensed', sans-serif;
+           color: #1a2980;
+           margin-bottom: 10px;
+       }
+       
+       .contact-method p {
+           color: #555;
+           font-size: 16px;
+       }
+       
+       .gradient-border {
+           position: relative;
+           border-radius: 12px;
+           padding: 4px;
+           background: linear-gradient(to right, #1a2980, #26d0ce);
+       }
+       
+       .gradient-border-inner {
+           background: white;
+           border-radius: 8px;
+           padding: 30px 25px;
+       }
+   </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Banner -->
+    <header class="contact-banner">
+        <div class="banner-content">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you and help plan your <span class="highlight-text">perfect trip</span></p>
+        </div>
+    </header>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods" data-aos="fade-up">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="margin-top: -50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; position: relative; z-index: 2;">
+                <div class="contact-method floating">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Visit Us</h3>
+                    <p>G.P.Purnea, Bihar<br>India</p>
+                </div>
+                <div class="contact-method floating" style="animation-delay: 0.3s">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <p>+91 9473452441<br>Available 24/7</p>
+                </div>
+                <div class="contact-method floating" style="animation-delay: 0.6s">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>madhukartrial@gmail.com<br>We'll respond within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact" data-aos="fade-up">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Have questions about our tours, packages, or need assistance planning your dream vacation? Our travel experts are here to help! Fill out the form or contact us directly using the information below.</p>
+            <ul>
+                <li class="floating">
+                    <i class="fas fa-map-marker-alt"></i> G.P.Purnea
+                </li>
+                <li class="floating">
+                    <i class="fas fa-phone"></i> +91 9473452441
+                </li>
+                <li class="floating">
+                    <i class="fas fa-envelope"></i> madhukartrial@gmail.com
+                </li>
+            </ul>
+            
+            <div class="gradient-border" style="margin-top: 40px;" data-aos="fade-up">
+                <div class="gradient-border-inner">
+                    <h3 style="color: #1a2980; font-family: 'Barlow Condensed', sans-serif; margin-bottom: 15px;">Office Hours</h3>
+                    <p style="margin-bottom: 10px;"><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+                    <p style="margin-bottom: 10px;"><strong>Saturday:</strong> 10:00 AM - 4:00 PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="../../submit_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Your email address">
+                
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Tell us how we can help you..."></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" data-aos="fade-up">
+        <h2 style="text-align: center; font-size: 36px; font-family: 'Satisfy', cursive; color: #1a2980; margin-bottom: 30px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);">Find Us</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28710.051487278!2d87.4431693!3d25.7782148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eff97518ae6bd3%3A0x56d3dc1f606e3d38!2sGovernment%20Polytechnic%2C%20Purnea!5e0!3m2!1sen!2sin!4v1717080234909!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Social Connect Section -->
+    <section class="social-connect" data-aos="fade-up">
+        <h2>Connect With Us</h2>
+        <p>Follow us on social media for travel inspiration, exclusive deals, and updates on new destinations</p>
+        <div class="social-large">
+            <a href="#" class="floating"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="floating" style="animation-delay: 0.2s"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/gortip13?igsh=N3VscnFzaDR5MGd2" class="floating" style="animation-delay: 0.4s"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="floating" style="animation-delay: 0.6s"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="floating" style="animation-delay: 0.8s"><i class="fab fa-youtube"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Main Footer -->
+        <div class="footer-main">
+            <div class="footer-column">
+                <h3>About Go Trip</h3>
+                <p>We are a premium travel agency specializing in handcrafted travel experiences to the world's most amazing destinations.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/gortip13?igsh=N3VscnFzaDR5MGd2"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Travel Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> G.P.Purnea</p>
+                <p><i class="fas fa-phone"></i> +91 9473452441</p>
+                <p><i class="fas fa-envelope"></i> madhukartrial@gmail.com</p>
+            </div>
+        </div>
+        
+        <!-- Copyright Section -->
+        <div class="copyright">
+            <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+            });
+            
+            // Check for form submission status from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
+            const error = urlParams.get('error');
+            
+            if (success) {
+                // Create and show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'alert alert-success';
+                successMessage.innerHTML = '<strong>Success!</strong> Your message has been sent. We will get back to you soon.';
+                
+                // Insert before the form
+                const contactForm = document.querySelector('.contact-form');
+                contactForm.insertBefore(successMessage, contactForm.firstChild);
+                
+                // Scroll to the message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 500);
+                }, 5000);
+            }
+            
+            if (error) {
+                // Create and show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'alert alert-danger';
+                errorMessage.innerHTML = '<strong>Error!</strong> There was a problem sending your message. Please try again.';
+                
+                // Insert before the form
+                const contactForm = document.querySelector('.contact-form');
+                contactForm.insertBefore(errorMessage, contactForm.firstChild);
+                
+                // Scroll to the message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    errorMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 500);
+                }, 5000);
+            }
+            
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html>
+

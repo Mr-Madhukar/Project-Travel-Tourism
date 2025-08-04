@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Go Trip</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Satisfy&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        /* Additional custom styles for more color */
+        .highlight-text {
+            color: #26d0ce;
+            font-weight: bold;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .accent-border {
+            border-left: 4px solid #26d0ce;
+            padding-left: 15px;
+        }
+        
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        .timeline-item:nth-child(odd) .timeline-content { animation: slideInFromLeft 0.5s ease-out forwards; }
+        .timeline-item:nth-child(even) .timeline-content { animation: slideInFromRight 0.5s ease-out forwards; }
+        
+        .mission-card:nth-child(1) { animation-delay: 0.1s; }
+        .mission-card:nth-child(2) { animation-delay: 0.3s; }
+        .mission-card:nth-child(3) { animation-delay: 0.5s; }
+        
+        .team-member:nth-child(1) { animation-delay: 0.1s; }
+        .team-member:nth-child(2) { animation-delay: 0.2s; }
+        .team-member:nth-child(3) { animation-delay: 0.3s; }
+        .team-member:nth-child(4) { animation-delay: 0.4s; }
+        .team-member:nth-child(5) { animation-delay: 0.5s; }
+        .team-member:nth-child(6) { animation-delay: 0.6s; }
+        
+        .color-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 41, 128, 0.7), rgba(38, 208, 206, 0.3));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .team-member:hover .color-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="about-hero" data-aos="fade-up">
+        <div class="about-hero-overlay">
+            <div class="about-hero-content">
+                <h1>Discover Our Story</h1>
+                <p>Committed to creating <span class="highlight-text">unforgettable</span> travel experiences since 1996</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Overview -->
+    <section class="about-section overview-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">WHO WE ARE</span>
+                <h2 class="section-title">Our Company</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="lead-text">Go Trip is a leading travel company dedicated to creating memorable journeys and authentic experiences for travelers around the world.</p>
+                    <p>Our dedicated team of travel experts is passionate about exploring the world and sharing that enthusiasm with you. From the bustling streets of Tokyo to the serene landscapes of Switzerland, we offer a wide range of destinations and travel packages designed to meet the needs of every traveler.</p>
+                    <p class="accent-border">We pride ourselves on our commitment to <span class="highlight-text">excellence</span>, personalized service, and sustainability. By working closely with local guides and communities, we ensure that our tours provide authentic experiences while also supporting local economies and preserving the environment.</p>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">28+</div>
+                            <div class="stat-label">Years of Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Destinations</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Happy Travelers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="../image/mountains.jpg" alt="Travel experience with Go Trip">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Timeline -->
+    <section class="about-section timeline-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">OUR JOURNEY</span>
+                <h2 class="section-title">Company History</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">1996</div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Go Trip was founded with a simple vision: to help people explore the world and create lasting memories.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2005</div>
+                    <div class="timeline-content">
+                        <h3>Expanding Horizons</h3>
+                        <p>We expanded our offerings to include destinations across Europe and Asia, bringing more diverse travel experiences to our customers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2010</div>
+                    <div class="timeline-content">
+                        <h3>Digital Transformation</h3>
+                        <p>Launched our online booking platform, making it easier for travelers to plan and customize their perfect trip.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2015</div>
+                    <div class="timeline-content">
+                        <h3>Sustainability Commitment</h3>
+                        <p>Implemented our sustainability initiative to minimize environmental impact and support local communities in all our destinations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Present Day</h3>
+                        <p>Today, Go Trip continues to innovate and expand, offering unique travel experiences while staying true to our core values of quality, authenticity, and customer satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="about-section mission-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">OUR PHILOSOPHY</span>
+                <h2 class="section-title">What Drives Us</h2>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h2>Our Mission</h2>
+                    <p>To provide unforgettable travel experiences that enrich our clients' lives by offering unique and authentic journeys that connect them to new cultures, people, and places.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2>Our Vision</h2>
+                    <p>To be a leader in the travel industry by consistently delivering exceptional service and sustainable travel solutions that inspire and satisfy our clients.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Our Values</h2>
+                    <ul class="values-list">
+                        <li><i class="fas fa-check"></i> Integrity</li>
+                        <li><i class="fas fa-check"></i> Customer Commitment</li>
+                        <li><i class="fas fa-check"></i> Quality Service</li>
+                        <li><i class="fas fa-check"></i> Passion for Travel</li>
+                        <li><i class="fas fa-check"></i> Sustainability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team -->
+    <section class="about-section team-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">OUR EXPERTS</span>
+                <h2 class="section-title">Meet The Team</h2>
+                <p class="section-description">Our dedicated team of travel enthusiasts is committed to making your travel dreams come true</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/MY.jpg" alt="Madhukar">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="http://www.linkedin.com/in/mr-madhukar" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/mr.madhukar.kumar" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Madhukar</h3>
+                        <span class="member-role">Co-Founder & CEO</span>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/abhi.jpg" alt="Abhishek Kumar">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Abhishek Kumar</h3>
+                        <span class="member-role">Marketing Director</span>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/navneet.jpg" alt="Navneet Raj">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/navneet-raj-5b9a302aa/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Navneet Raj</h3>
+                        <span class="member-role">Travel Consultant</span>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/me.jpg" alt="Archit Anand">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/archit-anand-561017297/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Archit Anand</h3>
+                        <span class="member-role">Operations Manager</span>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/nandan.jpg" alt="Nandan Kumar">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Nandan Kumar</h3>
+                        <span class="member-role">Customer Relations</span>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/Manmohan.png" alt="Manmohan Kumar">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/manmohan-kumar06" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/manmohank001" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Manmohan Kumar</h3>
+                        <span class="member-role">Finance Director</span>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="../image/utkarsh.png" alt="Utkarsh Kumar">
+                        <div class="color-overlay"></div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Utkarsh Kumar</h3>
+                        <span class="member-role">Destination Expert</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Highlight -->
+            <div class="team-highlight" data-aos="fade-up">
+                <h3>Join Our Team</h3>
+                <p>Are you passionate about travel and helping others create unforgettable experiences? We're always looking for talented individuals to join our growing team. If you share our values and enthusiasm for exploration, we'd love to hear from you!</p>
+                <a href="contact.html" class="btn-join">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="about-section testimonials-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">WHAT PEOPLE SAY</span>
+                <h2 class="section-title">Client Testimonials</h2>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Go Trip organized our family vacation to Switzerland, and it was absolutely perfect! Every detail was taken care of, from flights to accommodations and activities. I will definitely be booking with them again."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../image/Priya_Sharma.jpg" alt="Priya Sharma">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p>Family trip to Switzerland</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"As a solo traveler, I was looking for a company that could provide both adventure and security. Go Trip exceeded my expectations with their thoughtful itinerary and knowledgeable guides. My trip to Japan was the experience of a lifetime!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../image/rahul_mehra.jpg" alt="Rahul Mehra">
+                        <div>
+                            <h4>Rahul Mehra</h4>
+                            <p>Solo trip to Japan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Our honeymoon tour of Paris was magical thanks to Go Trip. They arranged special romantic experiences that we wouldn't have found on our own. The customer service was outstanding, and they were always available to answer our questions."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../image/neha_vijay.jpg" alt="Neha & Vijay">
+                        <div>
+                            <h4>Neha & Vijay</h4>
+                            <p>Honeymoon in Paris</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Achievements -->
+    <section class="about-section partners-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">OUR ACHIEVEMENTS</span>
+                <h2 class="section-title">Awards & Partners</h2>
+            </div>
+            <div class="awards-container">
+                <div class="award">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Best Tour Operator 2023</h3>
+                        <p>Travel & Tourism Excellence Awards</p>
+                    </div>
+                </div>
+                <div class="award">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Sustainable Tourism Award</h3>
+                        <p>International Travel Association</p>
+                    </div>
+                </div>
+                <div class="award">
+                    <div class="award-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="award-info">
+                        <h3>Customer Satisfaction Excellence</h3>
+                        <p>Tourism Industry Board</p>
+                    </div>
+                </div>
+            </div>
+            <div class="partners-container">
+                <h3>Our Trusted Partners</h3>
+                <div class="partners-logos">
+                    <div class="partner-logo">
+                        <img src="../image/makemytrip.png" alt="MakeMyTrip">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="../image/yatra.jpg" alt="Yatra">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="../image/travelyaari.jpg" alt="TravelYaari">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="../image/facebook.png" alt="Facebook">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="../image/instagram.png" alt="Instagram">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-section cta-section" data-aos="fade-up">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Start Your Journey Today</h2>
+                <p>Let us help you create memories that will last a lifetime</p>
+                <div class="cta-buttons">
+                    <a href="packages.html" class="btn-primary">Explore Packages</a>
+                    <a href="contact.html" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" data-aos="fade-up">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- Company Info Column -->
+                <div class="footer-column">
+                    <h3>Go Trip</h3>
+                    <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tours & Destinations -->
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destination-paris.html">Paris, France</a></li>
+                        <li><a href="destination-tokyo.html">Tokyo, Japan</a></li>
+                        <li><a href="destination-switzerland.html">Switzerland</a></li>
+                        <li><a href="destination-canada.html">Canada</a></li>
+                        <li><a href="destination-korea.html">South Korea</a></li>
+                        <li><a href="destination-monaco.html">Monaco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i>GP PURNEA</li>
+                        <li><i class="fas fa-phone"></i> +91 9473452441</li>
+                        <li><i class="fas fa-envelope"></i> info@gotrip.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html>

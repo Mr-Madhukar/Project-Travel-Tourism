@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Go Trip - Book your dream vacation" />
+    <meta name="keywords" content="travel, booking, vacation, holiday packages, destinations, travel agency" />
+    
+    <title>Book Your Trip | Go Trip</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/book.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="../css/modern-additions.css" />
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    
+    <!-- Additional styles for improved visibility -->
+    <style>
+        .booking-features {
+            background-color: #f0f3f8 !important;
+            border: 1px solid #ddd !important;
+        }
+        
+        .feature {
+            background-color: white !important;
+            color: #222 !important;
+            font-weight: 500 !important;
+            padding: 10px 15px !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.07) !important;
+        }
+        
+        .feature span {
+            color: #222 !important;
+            font-weight: 500 !important;
+        }
+        
+        .feature i {
+            color: #ff5252 !important;
+        }
+        
+        .summary-item span:first-child {
+            color: #333 !important;
+            font-weight: 500 !important;
+        }
+        
+        .summary-item span:last-child {
+            color: #222 !important;
+            font-weight: 600 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="../index.html">
+                        <img src="../image/logo.png" alt="Go Trip Logo" class="logo-img">
+                        <span>Go Trip</span>
+                    </a>
+                </div>
+                <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="menu">
+                    <li class="home-item"><a href="../index.html"><i class="fas fa-home"></i></a></li>
+                    <li><a href="packages.html"><i class="fas fa-box"></i> Packages</a></li>
+                    <li><a href="tours.html"><i class="fas fa-globe"></i> Tours</a></li>
+                    <li><a href="trip-planner.html"><i class="fas fa-map"></i> Planner</a></li>
+                    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                    <li><a href="about.html"><i class="fas fa-info"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="login-item"><a href="login.html" id="loginLink" data-tooltip="Login"><i class="fas fa-user"></i></a></li>
+                    <li class="booking-item" style="display: none;"><a href="../../user_dashboard.php" id="myBookingsLink" data-tooltip="My Dashboard"><i class="fas fa-user-circle"></i></a></li>
+                    <li class="logout-item" style="display: none;"><a href="#" id="logoutLink" data-tooltip="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a href="#" class="enable-alerts-btn" id="enableAlertsBtn" data-tooltip="Notifications"><i class="fas fa-bell"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <div class="booking-header" data-aos="fade-up">
+                <span class="section-subtitle">BOOK YOUR TRIP</span>
+                <h2 class="section-title">Complete Your Booking</h2>
+                <p>Fill in the details below to secure your dream vacation</p>
+            </div>
+            
+            <div class="booking-wrapper">
+                <div class="booking-form-container" data-aos="fade-up" data-aos-delay="100">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name*</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="destination">Destination*</label>
+                            <input type="text" class="form-control" id="destination" placeholder="Where are you going?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travelDate">Travel Date*</label>
+                            <input type="date" class="form-control" id="travelDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travelers">Number of Travelers*</label>
+                            <input type="number" class="form-control" id="travelers" min="1" value="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="roomType">Room Type*</label>
+                            <select class="form-control" id="roomType" required>
+                                <option value="">Select Room Type</option>
+                                <option value="standard">Standard</option>
+                                <option value="deluxe">Deluxe</option>
+                                <option value="suite">Suite</option>
+                                <option value="family">Family Room</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Additional Services</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="airportPickup"> 
+                                <label for="airportPickup">Airport Pickup (+$50)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="tourGuide"> 
+                                <label for="tourGuide">Tour Guide (+$100 per day)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="insurance"> 
+                                <label for="insurance">Travel Insurance (+$75)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialRequests">Special Requests</label>
+                            <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requirements or requests?"></textarea>
+                        </div>
+                        
+                        <div class="payment-options">
+                            <div class="payment-title">Payment Method</div>
+                            <div class="payment-methods">
+                                <div class="payment-method active">
+                                    <i class="fa fa-credit-card"></i>
+                                    <span>Credit Card</span>
+                                </div>
+                                <div class="payment-method">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                                <div class="payment-method">
+                                    <i class="fa fa-bank"></i>
+                                    <span>Bank Transfer</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-book">Confirm Booking</button>
+                    </form>
+                    <!-- Debug button for direct dashboard access -->
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="../../user_dashboard.php" class="btn-outline" style="display: inline-block; padding: 10px 15px; text-decoration: none; border: 1px solid #ccc; border-radius: 4px; color: #666;">
+                            Go to Dashboard (Debug)
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="trip-summary" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Trip Summary</h3>
+                    <img src="../image/paris.jpg" alt="Destination" class="destination-img" id="summaryImage">
+                    
+                    <div class="summary-item">
+                        <span>Destination:</span>
+                        <span id="summaryDestination">Paris, France</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Travel Date:</span>
+                        <span id="summaryDate">May 15, 2024</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Duration:</span>
+                        <span id="summaryDuration">4 Days</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Travelers:</span>
+                        <span id="summaryTravelers">1</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Room Type:</span>
+                        <span id="summaryRoom">Standard</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Base Price:</span>
+                        <span id="summaryBasePrice">₹ 1,49,999.00</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Additional Services:</span>
+                        <span id="summaryAddons">₹ 0.00</span>
+                    </div>
+                    
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">₹ 1,49,999.00</span>
+                    </div>
+                    
+                    <div class="booking-features">
+                        <div class="feature">
+                            <i class="fas fa-lock"></i>
+                            <span style="font-weight: 500; color: #333;">Secure Payment</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span style="font-weight: 500; color: #333;">No Hidden Fees</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-undo"></i>
+                            <span style="font-weight: 500; color: #333;">Free Cancellation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="../image/logo.png" alt="Go Trip Logo">
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime. We specialize in crafting personalized travel experiences around the globe.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                            <li><i class="fas fa-clock"></i> <span>Mon-Fri: 9:00 AM - 6:00 PM</span></li>
+                        </ul>
+                        <div class="app-download">
+                            <h4>Download Our App</h4>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-google-play"></i>
+                                    <span>Google Play</span>
+                                </a>
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-apple"></i>
+                                    <span>App Store</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-content">
+                        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                        <ul class="footer-bottom-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Override the loadAlerts method path for the book.html page
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+        
+        // Parse URL parameters to populate form fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const destination = urlParams.get('destination');
+            const date = urlParams.get('date');
+            const package = urlParams.get('package');
+            const tour = urlParams.get('tour');
+            const itineraryId = urlParams.get('itinerary_id');
+            
+            // Default image and details based on popular destinations
+            const destinationImages = {
+                'Paris, France': '../image/paris.jpg',
+                'Tokyo, Japan': '../image/tokyo.jpg',
+                'Bern, Switzerland': '../image/switzerland.png',
+                'Vancouver, Canada': '../image/canada.png',
+                'Seoul, South Korea': '../image/korea.png',
+                'Monaco, Monaco': '../image/monaco.jpg'
+            };
+            
+            const destinationPrices = {
+                'Paris, France': '₹ 1,49,999.00',
+                'Tokyo, Japan': '₹ 1,69,999.00',
+                'Bern, Switzerland': '₹ 1,59,999.00',
+                'Vancouver, Canada': '₹ 1,99,999.00',
+                'Seoul, South Korea': '₹ 1,49,999.00',
+                'Monaco, Monaco': '₹ 1,39,999.00'
+            };
+            
+            const destinationDurations = {
+                'Paris, France': '4 Days',
+                'Tokyo, Japan': '5 Days',
+                'Bern, Switzerland': '5 Days',
+                'Vancouver, Canada': '5 Days',
+                'Seoul, South Korea': '4 Days',
+                'Monaco, Monaco': '4 Days'
+            };
+            
+            // If destination parameter is present, populate form fields
+            if (destination) {
+                // Handle both formats: "Paris, France" and "1|Paris, France"
+                let destinationText = destination;
+                if (destination.includes('|')) {
+                    destinationText = destination.split('|')[1];
+                }
+                
+                document.getElementById('destination').value = destinationText;
+                document.getElementById('summaryDestination').textContent = destinationText;
+                
+                // Update image and price if available
+                if (destinationImages[destinationText]) {
+                    document.getElementById('summaryImage').src = destinationImages[destinationText];
+                }
+                
+                if (destinationPrices[destinationText]) {
+                    document.getElementById('summaryBasePrice').textContent = destinationPrices[destinationText];
+                    document.getElementById('summaryTotal').textContent = destinationPrices[destinationText];
+                }
+                
+                if (destinationDurations[destinationText]) {
+                    document.getElementById('summaryDuration').textContent = destinationDurations[destinationText];
+                }
+            }
+            
+            // If date parameter is present, populate date field
+            if (date) {
+                document.getElementById('travelDate').value = date;
+                
+                // Format date for display
+                const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('summaryDate').textContent = formattedDate;
+            }
+            
+            // Handle package types
+            if (package) {
+                // Logic to handle different package types
+                switch(package) {
+                    case 'swiss-adventure':
+                        document.getElementById('destination').value = 'Bern, Switzerland';
+                        document.getElementById('summaryDestination').textContent = 'Bern, Switzerland';
+                        document.getElementById('summaryImage').src = '../image/switzerland.png';
+                        document.getElementById('summaryBasePrice').textContent = '₹ 1,59,999.00';
+                        document.getElementById('summaryTotal').textContent = '₹ 1,59,999.00';
+                        document.getElementById('summaryDuration').textContent = '5 Days';
+                        break;
+                    case 'paris-escapade':
+                        document.getElementById('destination').value = 'Paris, France';
+                        document.getElementById('summaryDestination').textContent = 'Paris, France';
+                        document.getElementById('summaryImage').src = '../image/paris.jpg';
+                        document.getElementById('summaryBasePrice').textContent = '₹ 1,49,999.00';
+                        document.getElementById('summaryTotal').textContent = '₹ 1,49,999.00';
+                        document.getElementById('summaryDuration').textContent = '4 Days';
+                        break;
+                    // Add more package cases as needed
+                }
+            }
+            
+            // Handle tour types
+            if (tour) {
+                // Logic to handle different tour types
+                switch(tour) {
+                    case 'paris-cultural':
+                        document.getElementById('destination').value = 'Paris, France';
+                        document.getElementById('summaryDestination').textContent = 'Paris Cultural Tour';
+                        document.getElementById('summaryImage').src = '../image/paris.jpg';
+                        document.getElementById('summaryBasePrice').textContent = '₹ 1,49,999.00';
+                        document.getElementById('summaryTotal').textContent = '₹ 1,49,999.00';
+                        document.getElementById('summaryDuration').textContent = '4 Days';
+                        break;
+                    // Add more tour cases as needed
+                }
+            }
+            
+            // Handle login status
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // If user is logged in, try to populate user details
+                const username = localStorage.getItem('username');
+                if (username) {
+                    // For demo purposes - in a real app, you'd fetch this from server
+                    const userData = {
+                        fullName: username,
+                        email: username + '@example.com',
+                        phone: '+1234567890'
+                    };
+                    
+                    // Populate form with user data
+                    document.getElementById('fullName').value = userData.fullName;
+                    document.getElementById('email').value = userData.email;
+                    document.getElementById('phone').value = userData.phone;
+                }
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+                
+                // Show notification to log in
+                setTimeout(function() {
+                    alert('Please log in to complete your booking.');
+                }, 1000);
+            }
+            
+            // Dynamic calculation of total price based on options selected
+            function updateTotal() {
+                let basePrice = parseFloat(document.getElementById('summaryBasePrice').textContent.replace(/[^0-9.]/g, ''));
+                let additionalCost = 0;
+                
+                // Number of travelers
+                const travelers = parseInt(document.getElementById('travelers').value) || 1;
+                document.getElementById('summaryTravelers').textContent = travelers;
+                
+                // Calculate costs based on travelers
+                basePrice = basePrice * travelers;
+                
+                // Room type adjustment
+                const roomType = document.getElementById('roomType').value;
+                document.getElementById('summaryRoom').textContent = roomType.charAt(0).toUpperCase() + roomType.slice(1);
+                
+                switch(roomType) {
+                    case 'deluxe':
+                        additionalCost += 15000 * travelers;
+                        break;
+                    case 'suite':
+                        additionalCost += 30000 * travelers;
+                        break;
+                    case 'family':
+                        additionalCost += 20000 * travelers;
+                        break;
+                }
+                
+                // Additional services
+                let addonsCost = 0;
+                if (document.getElementById('airportPickup').checked) addonsCost += 4200; // $50 approx
+                if (document.getElementById('tourGuide').checked) addonsCost += 8400; // $100 approx
+                if (document.getElementById('insurance').checked) addonsCost += 6300 * travelers; // $75 per person approx
+                
+                document.getElementById('summaryAddons').textContent = '₹ ' + addonsCost.toLocaleString('en-IN') + '.00';
+                
+                // Calculate total
+                const total = basePrice + additionalCost + addonsCost;
+                document.getElementById('summaryTotal').textContent = '₹ ' + total.toLocaleString('en-IN') + '.00';
+            }
+            
+            // Add event listeners to update total dynamically
+            document.getElementById('travelers').addEventListener('change', updateTotal);
+            document.getElementById('roomType').addEventListener('change', updateTotal);
+            document.getElementById('airportPickup').addEventListener('change', updateTotal);
+            document.getElementById('tourGuide').addEventListener('change', updateTotal);
+            document.getElementById('insurance').addEventListener('change', updateTotal);
+            
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Handle form submission
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Check if user is logged in
+                if (!isLoggedIn) {
+                    // Redirect to login page with return URL
+                    const returnUrl = `book.html?destination=${encodeURIComponent(document.getElementById('destination').value)}&date=${encodeURIComponent(document.getElementById('travelDate').value)}`;
+                    window.location.href = `login.html?return=${encodeURIComponent(returnUrl)}`;
+                    return;
+                }
+                
+                // Get form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    destination: document.getElementById('destination').value,
+                    travelDate: document.getElementById('travelDate').value,
+                    travelers: document.getElementById('travelers').value,
+                    roomType: document.getElementById('roomType').value,
+                    airportPickup: document.getElementById('airportPickup').checked,
+                    tourGuide: document.getElementById('tourGuide').checked,
+                    insurance: document.getElementById('insurance').checked,
+                    specialRequests: document.getElementById('specialRequests').value,
+                    totalAmount: document.getElementById('summaryTotal').textContent
+                };
+                
+                // Create FormData object for AJAX submission
+                const ajaxFormData = new FormData();
+                
+                // Add all form data to FormData object
+                for (const key in formData) {
+                    ajaxFormData.append(key, formData[key]);
+                }
+                
+                // Add username from localStorage
+                const username = localStorage.getItem('username');
+                ajaxFormData.append('username', username);
+                
+                // Add booking reference number
+                const bookingRef = Math.floor(100000 + Math.random() * 900000);
+                ajaxFormData.append('bookingRef', bookingRef);
+                
+                // AJAX request to submit booking data
+                fetch('process_booking.php', {
+                    method: 'POST',
+                    body: ajaxFormData
+                })
+                .then(response => {
+                    // Log the raw response for debugging
+                    console.log('Raw Response:', response);
+                    return response.json();
+                })
+                .then(data => {
+                    // Log the parsed data response
+                    console.log('Booking Response Data:', data);
+                    
+                    if (data.success) {
+                        // Store booking info in localStorage for retrieval in dashboard
+                        localStorage.setItem('lastBookingRef', bookingRef);
+                        localStorage.setItem('lastBookingDestination', formData.destination);
+                        localStorage.setItem('lastBookingDate', formData.travelDate);
+                        localStorage.setItem('lastBookingAmount', formData.totalAmount);
+                        localStorage.setItem('lastBookingRoomType', formData.roomType);
+                        localStorage.setItem('lastBookingTravelers', formData.travelers);
+                        localStorage.setItem('lastBookingCreated', new Date().toISOString());
+                        
+                        if (data.booking_id) {
+                            localStorage.setItem('lastBookingId', data.booking_id);
+                        }
+                        
+                        if (data.user_id) {
+                            localStorage.setItem('userId', data.user_id);
+                        }
+                        
+                        // Show success message
+                        alert('Thank you for your booking! Your confirmation number is: ' + bookingRef);
+                        
+                        // Redirect to the booking confirmation page
+                        const confirmationUrl = `booking-confirmation.html?package=${encodeURIComponent(formData.destination)}&date=${encodeURIComponent(formData.travelDate)}&travelers=${encodeURIComponent(formData.travelers)}&name=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&ref=${bookingRef}`;
+                        window.location.href = confirmationUrl;
+                    } else {
+                        // Show error message with details
+                        console.error('Booking error:', data.message);
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    // Log the detailed error
+                    console.error('Fetch Error:', error);
+                    
+                    // Don't use the fallback for production - we want to save to the database
+                    alert('An error occurred while processing your booking. Please try again.');
+                    
+                    // For debugging purposes, log what would have been sent
+                    console.log('Form data that would have been sent:', {
+                        fullName: formData.fullName,
+                        email: formData.email,
+                        phone: formData.phone,
+                        destination: formData.destination,
+                        travelDate: formData.travelDate,
+                        travelers: formData.travelers,
+                        roomType: formData.roomType,
+                        totalAmount: formData.totalAmount,
+                        username: username,
+                        bookingRef: bookingRef
+                    });
+                });
+            });
+            
+            // Add direct access to dashboard for testing
+            document.querySelector('.btn-book').addEventListener('dblclick', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Go directly to dashboard on double-click (for testing)
+                window.location.href = '../../user_dashboard.php';
+            });
+        });
+        
+        // Function to handle logout
+        function logout() {
+            // Clear local storage
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+        
+        // Menu Toggle for Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const menu = document.querySelector('.menu');
+        const body = document.body;
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            this.classList.toggle('is-active');
+            
+            // Prevent scrolling when menu is open
+            if (menu.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+        });
+        
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>

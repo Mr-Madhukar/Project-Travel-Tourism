@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tokyo - Go Trip</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/destination.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <style>
+        /* Existing styles */
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b6b;
+            padding-left: 5px;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #ff6b6b;
+        }
+        
+        .newsletter-input-group {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .newsletter-input-group input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-input-group button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-bottom-links li {
+            margin-left: 20px;
+        }
+        
+        .footer-bottom-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-column {
+                flex: 100%;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .footer-bottom-links li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Destination Header -->
+    <section class="destination-header destination-page" style="background-image: url(../image/tokyo.jpg);" data-destination-id="6">
+        <div class="destination-overlay"></div>
+        <div class="destination-title">
+            <h1>Vibrant Tokyo</h1>
+            <p>Experience the perfect blend of ancient traditions and futuristic innovations in Japan's captivating capital</p>
+        </div>
+    </section>
+
+    <!-- Destination Overview -->
+    <section class="destination-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Why Visit Tokyo?</h2>
+                    <p>Tokyo, a city where centuries-old traditions harmoniously coexist with cutting-edge technology, offers an immersive experience unlike anywhere else in the world. From ancient temples and imperial gardens to neon-lit districts and futuristic skyscrapers, Japan's sprawling capital presents a fascinating mosaic of experiences. Whether you're savoring world-class cuisine, exploring vibrant neighborhoods, or immersing yourself in rich cultural traditions, Tokyo captivates visitors with its unique blend of order, innovation, and boundless energy.</p>
+                    
+                    <div class="overview-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">🏯</span>
+                            <h3>Traditional Culture</h3>
+                            <p>Discover ancient temples, historic gardens, and traditional ceremonies that preserve Japan's rich heritage</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🌆</span>
+                            <h3>Modern Marvels</h3>
+                            <p>Experience futuristic technology, impressive architecture, and cutting-edge urban innovation</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🍣</span>
+                            <h3>Culinary Paradise</h3>
+                            <p>Indulge in world-renowned cuisine from Michelin-starred restaurants to authentic street food</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🛍️</span>
+                            <h3>Shopping Haven</h3>
+                            <p>Explore diverse shopping districts offering everything from luxury brands to unique local crafts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-details">
+                    <div class="detail-box">
+                        <h3>Best Time to Visit</h3>
+                        <p>Spring (March-May) for cherry blossoms and mild weather</p>
+                        <p>Fall (September-November) for colorful foliage and pleasant temperatures</p>
+                        <p>Winter (December-February) for fewer crowds and festive illuminations</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Language</h3>
+                        <p>Japanese (official language)</p>
+                        <p>English signage in tourist areas and basic English spoken in main attractions</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Currency</h3>
+                        <p>Japanese Yen (¥)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Stay Updated</h3>
+                        <button class="enable-notifications"><i class="fas fa-bell"></i> Get Tokyo Travel Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-places">
+        <div class="container">
+            <h2>Top Tourist Destinations in Tokyo</h2>
+            <div class="places-grid">
+                <div class="place-card" data-aos="fade-up">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=1000&auto=format&fit=crop" alt="Senso-ji Temple, Asakusa">
+                    </div>
+                    <div class="place-info">
+                        <h3>Senso-ji Temple & Asakusa</h3>
+                        <p>Tokyo's oldest and most significant Buddhist temple with iconic Kaminarimon Gate and vibrant shopping street</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="place-img">
+                        <img src="https://i1.wp.com/tokyoisours.com/wp-content/uploads/2019/10/shibuya-crossing.jpg?fit=1920%2C1440&ssl=1" alt="Shibuya Crossing">
+                    </div>
+                    <div class="place-info">
+                        <h3>Shibuya Crossing</h3>
+                        <p>World's busiest pedestrian intersection with neon lights, shopping centers, and the famous Hachiko statue</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=1000&auto=format&fit=crop" alt="Tokyo Skytree">
+                    </div>
+                    <div class="place-info">
+                        <h3>Tokyo Skytree</h3>
+                        <p>Japan's tallest structure with observation decks offering breathtaking panoramic views of the city</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=1000&auto=format&fit=crop" alt="Meiji Shrine">
+                    </div>
+                    <div class="place-info">
+                        <h3>Meiji Shrine & Yoyogi Park</h3>
+                        <p>Serene Shinto shrine surrounded by a lush forest and adjacent to one of Tokyo's largest parks</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: Half day</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?q=80&w=1000&auto=format&fit=crop" alt="Akihabara">
+                    </div>
+                    <div class="place-info">
+                        <h3>Akihabara Electric Town</h3>
+                        <p>Electronic and anime paradise with colorful shops, gaming centers, and maid cafes</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="place-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="place-img">
+                        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1000&auto=format&fit=crop" alt="Tsukiji Fish Market">
+                    </div>
+                    <div class="place-info">
+                        <h3>Tsukiji Outer Market</h3>
+                        <p>Historic food market with restaurants and shops offering the freshest seafood and Japanese delicacies</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Packages -->
+    <section class="trip-packages">
+        <div class="container">
+            <h2>Tokyo Tour Packages</h2>
+            <p class="section-intro">Choose from our carefully curated travel packages designed to give you the ultimate Tokyo experience</p>
+            
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <div class="package-header">
+                        <h3>Essential Tokyo</h3>
+                        <div class="package-price dynamic-price" data-destination-id="6">₹ 1,69,999.00/ Per Person/$2024</div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> 5 Days & 4 Nights</li>
+                            <li><i class="fas fa-check-circle"></i> Accommodation in 4-star hotels</li>
+                            <li><i class="fas fa-check-circle"></i> Daily breakfast</li>
+                            <li><i class="fas fa-check-circle"></i> Guided tours to major attractions</li>
+                            <li><i class="fas fa-check-circle"></i> Airport transfers</li>
+                        </ul>
+                        <a href="book.html?destination=Tokyo,%20Japan" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- More packages would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips" data-aos="fade-up">
+        <div class="container">
+            <h2>Travel Tips for Tokyo</h2>
+            <div class="tips-grid">
+                <div class="tip">
+                    <div class="tip-icon"><i class="fas fa-subway"></i></div>
+                    <h3>Transportation</h3>
+                    <p>The Tokyo Metro and JR trains provide extensive coverage of the city. Consider purchasing a PASMO or Suica card for easy transit. Taxis are clean and reliable but expensive.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon"><i class="fas fa-language"></i></div>
+                    <h3>Language</h3>
+                    <p>While English signage is common in tourist areas, learning a few basic Japanese phrases like "Arigatou" (Thank you) and "Sumimasen" (Excuse me) will be appreciated.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon"><i class="fas fa-wifi"></i></div>
+                    <h3>Internet Access</h3>
+                    <p>Free Wi-Fi is available in many public places, but consider renting a pocket Wi-Fi device or purchasing a local SIM card for reliable connectivity.</p>
+                </div>
+                <div class="tip">
+                    <div class="tip-icon"><i class="fas fa-credit-card"></i></div>
+                    <h3>Money</h3>
+                    <p>Japan is still largely a cash-based society. Always carry cash, as many smaller establishments don't accept credit cards. ATMs are available at convenience stores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                        </ul>
+                        <form class="footer-newsletter-form">
+                            <h3>Newsletter</h3>
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Your Email" required>
+                                <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Login Check Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+        
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                });
+        }
+    </script>
+
+    <!-- Travel Alerts Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Set the path for travel alerts JSON
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+    
+    <!-- Back to Top Button JavaScript -->
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html> 

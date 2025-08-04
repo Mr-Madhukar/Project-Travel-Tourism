@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Go Trip - Your trusted travel partner for unforgettable journeys worldwide" />
+    <meta name="keywords" content="travel, tourism, vacation, holiday packages, destinations, travel agency" />
+    
+    <title>Go Trip | Discover Your Dream Destination</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="image/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/travel-alerts.css">
+    <link rel="stylesheet" href="css/modern-additions.css">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles to Fix Banner Search Elements -->
+    <style>
+        /* Fix search container alignment issues */
+        .search-container {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping to keep elements in line */
+            gap: 0; /* Remove gap between elements */
+            width: 100%;
+            max-width: 880px;
+            background: rgba(255, 255, 255, 0.15);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: space-between; /* Distribute space evenly */
+        }
+        
+        /* Make both inputs and button consistent in height */
+        .input-group {
+            position: relative;
+            flex: 1.2 1 200px;
+            margin-right: 10px; /* Add specific margin between elements */
+        }
+        
+        .date-input-group {
+            flex: 0.8 1 160px !important; /* Make calendar slightly shorter */
+            margin: 0 10px 0 0 !important; /* Add margin to the right */
+        }
+        
+        .input-group input, 
+        .input-group .date, 
+        .book {
+            height: 50px;
+            box-sizing: border-box;
+        }
+        
+        /* Make calendar same size as destination input */
+        .input-group .date {
+            width: 100% !important;
+            min-width: unset !important;
+            padding: 15px 15px 15px 45px !important;
+        }
+        
+        /* Make explore button match other inputs */
+        .book {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 25px;
+            min-width: 140px; /* Make slightly narrower */
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 0 10px; /* Equal margin on both sides */
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                flex-wrap: wrap; /* Allow wrapping on mobile */
+                gap: 10px; /* Add gap for mobile vertical layout */
+                padding: 15px;
+            }
+            
+            .input-group, 
+            .date-input-group {
+                width: 100%;
+                flex: 1 1 100%;
+                margin-right: 0; /* Remove horizontal margin on mobile */
+                margin-bottom: 10px;
+            }
+            
+            .book {
+                width: 100%;
+                height: 50px;
+                margin-top: 5px; /* Add a bit of space above button on mobile */
+            }
+        }
+    </style>
+</head>
+
+    <body>
+
+        <script>
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+            });
+
+            // Function to load destinations
+            function loadDestinations() {
+                // First add static destinations for immediate display
+                const popularDestinations = [
+                    {name: "Paris", country: "France"},
+                    {name: "Tokyo", country: "Japan"},
+                    {name: "Bern", country: "Switzerland"},
+                    {name: "Vancouver", country: "Canada"},
+                    {name: "Seoul", country: "South Korea"},
+                    {name: "Monaco", country: "Monaco"}
+                ];
+                
+                const datalist = document.getElementById('mylist');
+                datalist.innerHTML = ''; // Clear existing options
+                
+                // Add static destinations first
+                popularDestinations.forEach(dest => {
+                    const option = document.createElement('option');
+                    option.value = `${dest.name}, ${dest.country}`;
+                    datalist.appendChild(option);
+                });
+                
+                // Then try to fetch more from the server
+                try {
+                    fetch('get_destinations.php')
+                        .then(response => response.json())
+                        .then(destinations => {
+                            // Only add destinations that aren't already in the list
+                            destinations.forEach(dest => {
+                                if (!popularDestinations.some(p => p.name === dest.name && p.country === dest.country)) {
+                                    const option = document.createElement('option');
+                                    option.value = `${dest.name}, ${dest.country}`;
+                                    datalist.appendChild(option);
+                                }
+                            });
+                        })
+                        .catch(error => console.error('Error loading destinations:', error));
+                } catch (error) {
+                    console.log('Using static destinations only');
+                }
+            }
+
+            // Function to enhance destination input
+            function enhanceDestinationInput() {
+                const destinationInput = document.getElementById('destination');
+                
+                // Add click handler to show dropdown
+                destinationInput.addEventListener('click', function() {
+                    // This creates a focus and shows native dropdown
+                    this.focus();
+                    // Trigger dropdown display (browser-dependent)
+                    const event = new Event('input', { bubbles: true });
+                    this.dispatchEvent(event);
+                });
+            }
+
+            // Function to enhance date input
+            function enhanceDateInput() {
+                const dateInput = document.getElementById('date');
+                
+                // Set min date to today
+                const today = new Date();
+                const year = today.getFullYear();
+                let month = today.getMonth() + 1;
+                let day = today.getDate();
+                
+                // Format month and day with leading zeros if needed
+                month = month < 10 ? '0' + month : month;
+                day = day < 10 ? '0' + day : day;
+                
+                const formattedDate = `${year}-${month}-${day}`;
+                dateInput.setAttribute('min', formattedDate);
+                
+                // Ensure placeholder shows up correctly in all browsers
+                if (!dateInput.value) {
+                    dateInput.type = 'text';
+                    dateInput.placeholder = 'Select date';
+                }
+                
+                // When focused, change to date type
+                dateInput.addEventListener('focus', function() {
+                    this.type = 'date';
+                });
+                
+                // If user leaves field without selecting a date, revert to placeholder
+                dateInput.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.type = 'text';
+                    }
+                });
+                
+                // Make sure clicking icon also shows calendar
+                const calendarIcon = dateInput.previousElementSibling;
+                calendarIcon.addEventListener('click', function() {
+                    dateInput.focus();
+                    // Try to trigger the calendar
+                    const event = new MouseEvent('click', {
+                        view: window,
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    dateInput.dispatchEvent(event);
+                });
+            }
+
+            // Function to load dynamic prices
+            function loadDynamicPrices() {
+                fetch('get_prices.php')
+                    .then(response => response.json())
+                    .then(prices => {
+                        prices.forEach(price => {
+                            // Find all cards with this destination name
+                            const cards = document.querySelectorAll('.card');
+                            cards.forEach(card => {
+                                const heading = card.querySelector('h2');
+                                if (heading && heading.textContent.trim() === price.name) {
+                                    const costElement = card.querySelector('.cost');
+                                    if (costElement) {
+                                        updatePriceElement(costElement, price);
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => console.error('Error loading dynamic prices:', error));
+            }
+
+            // Helper function to update a price element with dynamic pricing
+            function updatePriceElement(element, priceData) {
+                // Get original price for comparison
+                const originalPrice = element.textContent;
+                
+                // Add price information and dynamic pricing class
+                element.textContent = priceData.formatted_dynamic_price;
+                element.classList.add('dynamic-price');
+                
+                // Add hover effect to show price factors
+                element.setAttribute('data-original-price', originalPrice);
+                element.setAttribute('data-tooltip', `Factors: Season (${priceData.factors.season}), Demand (${priceData.factors.demand})${priceData.factors.special_event ? ', Special Event' : ''}`);
+                
+                // Highlight if price is different
+                if (priceData.formatted_base_price !== priceData.formatted_dynamic_price) {
+                    element.classList.add('price-changed');
+                    
+                    // Create a small indicator to show price change
+                    const priceChange = document.createElement('span');
+                    priceChange.className = 'price-indicator';
+                    
+                    const basePrice = parseFloat(priceData.base_price);
+                    const dynamicPrice = parseFloat(priceData.dynamic_price);
+                    const percentChange = ((dynamicPrice - basePrice) / basePrice * 100).toFixed(1);
+                    
+                    if (dynamicPrice > basePrice) {
+                        priceChange.classList.add('price-up');
+                        priceChange.innerHTML = `▲ ${percentChange}%`;
+                    } else {
+                        priceChange.classList.add('price-down');
+                        priceChange.innerHTML = `▼ ${Math.abs(percentChange)}%`;
+                    }
+                    
+                    // Add the indicator after the price element
+                    element.appendChild(priceChange);
+                }
+            }
+
+            // Load destinations and prices when the page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                loadDestinations();
+                loadDynamicPrices();
+                enhanceDestinationInput();
+                enhanceDateInput();
+                
+                // Check login status as in the original code
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const loginItem = document.querySelector('.login-item');
+                const bookingItem = document.querySelector('.booking-item');
+                const logoutItem = document.querySelector('.logout-item');
+                const alertsItem = document.querySelector('.alerts-item');
+                const aboutAlertsBtn = document.getElementById('aboutAlertsBtn');
+                const inlineAlerts = document.getElementById('inlineAlerts');
+                
+                if (isLoggedIn) {
+                    // User is logged in, show booking, logout, and alerts links
+                    loginItem.style.display = 'none';
+                    bookingItem.style.display = 'block';
+                    logoutItem.style.display = 'block';
+                    alertsItem.style.display = 'block';
+                    if (aboutAlertsBtn) aboutAlertsBtn.style.display = 'inline-block';
+                    if (inlineAlerts) inlineAlerts.style.display = 'block';
+                    
+                    // Add event listener to logout link
+                    document.getElementById('logoutLink').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logout();
+                    });
+                } else {
+                    // User is not logged in, show login link and hide others
+                    loginItem.style.display = 'block';
+                    bookingItem.style.display = 'none';
+                    logoutItem.style.display = 'none';
+                    alertsItem.style.display = 'none';
+                    if (aboutAlertsBtn) aboutAlertsBtn.style.display = 'none';
+                    if (inlineAlerts) inlineAlerts.style.display = 'none';
+                }
+                
+                // Handle booking form submission
+                document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const destination = document.getElementById('destination').value;
+                    const date = document.getElementById('date').value;
+                    
+                    // Check if user is logged in
+                    if (isLoggedIn) {
+                        // Redirect to booking page with parameters
+                        window.location.href = `views/book.html?destination=${encodeURIComponent(destination)}&date=${encodeURIComponent(date)}`;
+                    } else {
+                        // Redirect to login page with return URL
+                        const returnUrl = `views/book.html?destination=${encodeURIComponent(destination)}&date=${encodeURIComponent(date)}`;
+                        window.location.href = `views/login.html?return=${encodeURIComponent(returnUrl)}`;
+                    }
+                });
+            });
+            
+            // Logout function
+            function logout() {
+                // Send request to logout.php
+                fetch('logout.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear local storage
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('username');
+                        
+                        // Update UI - hide elements that should only be visible when logged in
+                        const bookingItem = document.querySelector('.booking-item');
+                        const logoutItem = document.querySelector('.logout-item');
+                        const alertsItem = document.querySelector('.alerts-item');
+                        const loginItem = document.querySelector('.login-item');
+                        const aboutAlertsBtn = document.getElementById('aboutAlertsBtn');
+                        const inlineAlerts = document.getElementById('inlineAlerts');
+                        
+                        if (bookingItem) bookingItem.style.display = 'none';
+                        if (logoutItem) logoutItem.style.display = 'none';
+                        if (alertsItem) alertsItem.style.display = 'none';
+                        if (loginItem) loginItem.style.display = 'block';
+                        if (aboutAlertsBtn) aboutAlertsBtn.style.display = 'none';
+                        if (inlineAlerts) inlineAlerts.style.display = 'none';
+                        
+                        // Redirect to home page
+                        window.location.href = 'index.html';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Still clear local storage and redirect even if server request fails
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('username');
+                        window.location.href = 'index.html';
+                    });
+            }
+        </script>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts" id="inlineAlerts" style="display: none;"></div>
+
+        <!-- Navigation Bar -->
+<nav class="nav-bar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span>Go Trip</span>
+                    </a>
+                </div>
+                <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="menu">
+                    <li class="home-item"><a href="index.html" class="active" data-tooltip="Home"><i class="fas fa-home"></i></a></li>
+                    <li><a href="views/packages.html"><i class="fas fa-suitcase"></i> Packages</a></li>
+                    <li><a href="views/tours.html"><i class="fas fa-globe-americas"></i> Tours</a></li>
+                    <li><a href="views/trip-planner.html"><i class="fas fa-route"></i> Planner</a></li>
+                    <li><a href="views/blog.html"><i class="fas fa-rss"></i> Blog</a></li>
+                    <li><a href="views/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="views/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="login-item"><a href="views/login.html" id="loginLink" data-tooltip="Login"><i class="fas fa-sign-in-alt"></i></a></li>
+                    <li class="booking-item" style="display: none;"><a href="../user_dashboard.php" id="myBookingsLink" data-tooltip="Dashboard"><i class="fas fa-user-circle"></i></a></li>
+                    <li class="logout-item" style="display: none;"><a href="#" id="logoutLink" data-tooltip="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                    <li class="alerts-item" style="display: none;"><a href="#" class="enable-alerts-btn" id="enableAlertsBtn" data-tooltip="Alerts"><i class="fas fa-bell"></i></a></li>
+                </ul>
+            </div>
+        </div>
+</nav>
+
+    <!-- Banner Section -->
+    <header class="banner" id="home">
+        <div class="animated-bg"></div>
+        <div class="overlay"></div>
+        <div class="banner-text-item" data-aos="fade-up">
+            <div class="banner-heading">
+                <h1><span class="highlight-text">Explore</span> The World!</h1>
+                <p class="banner-subtitle">Discover amazing destinations and create unforgettable memories</p>
+            </div>
+            <form class="form" id="bookingForm">
+                <div class="search-container">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" list="mylist" id="destination" placeholder="Where would you like to go?" required autocomplete="off">
+                        <datalist id="mylist">
+                            <!-- Options will be loaded dynamically -->
+                            <option value="Paris, France"></option>
+                            <option value="Tokyo, Japan"></option>
+                            <option value="Bern, Switzerland"></option>
+                            <option value="Vancouver, Canada"></option>
+                            <option value="Seoul, South Korea"></option>
+                            <option value="Monaco, Monaco"></option>
+                        </datalist>
+                    </div>
+                    <div class="input-group date-input-group">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="date" class="date wide-date" id="date" placeholder="Select date" required min="2024-05-01">
+                    </div>
+                    <button class="book" type="submit">
+                        <i class="fas fa-search"></i> Explore Now
+                    </button>
+                </div>
+            </form>
+            <div class="banner-features">
+                <div class="feature">
+                    <i class="fas fa-globe"></i>
+                    <span>100+ Destinations</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-plane"></i>
+                    <span>Best Prices</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title mini-title">Why Choose Us</h2>
+            </div>
+            <div class="attractive-services" data-aos="fade-up">
+                <div class="attractive-service" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="service-circle">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span>1000+ Guides</span>
+                </div>
+                <div class="attractive-service" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="service-circle">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <span>Trusted Agency</span>
+                </div>
+                <div class="attractive-service" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="service-circle">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <span>28+ Years</span>
+                </div>
+                <div class="attractive-service" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="service-circle">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <span>98% Happy Travelers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations Section -->
+    <section class="places" id="places">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Popular Destinations</span>
+                <h2 class="section-title no-underline">Explore Top Destinations</h2>
+                <p class="section-description">Discover amazing places around the world with our exclusive travel packages</p>
+            </div>
+
+            <div class="cards" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                    <div class="card-tag">Popular</div>
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-canada.html">
+                                <img src="image/canada.png" alt="Vancouver, Canada">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                            <h2>Canada</h2>
+                        </div>
+                        <p class="cost">₹ 1,99,999.00/ Per Person/$2382</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>5 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i>Canada</p>
+                        </div>
+                        <a href="views/destination-canada.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-paris.html">
+                                <img src="image/paris.jpg" alt="Paris, France">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                            <h2>Paris</h2>
+                        </div>
+                        <p class="cost">₹ 1,49,999.00 / Per Person/$1786</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>4 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i>Paris</p>
+                        </div>
+                        <a href="views/destination-paris.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-tag">Best Offer</div>
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-monaco.html">
+                                <img src="image/monaco.jpg" alt="Monaco">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                            <h2>Monaco</h2>
+                        </div>
+                        <p class="cost">₹ 1,39,999.00 / Per Person/$1667</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>4 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i>Monaco</p>
+                        </div>
+                        <a href="views/destination-monaco.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-switzerland.html">
+                                <img src="image/switzerland.png" alt="Switzerland">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                        <h2>Switzerland</h2>
+                        </div>
+                        <p class="cost">₹ 1,59,999.00 / Per Person/$1906</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>5 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i>Switzerland</p>
+                        </div>
+                        <a href="views/destination-switzerland.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-korea.html">
+                                <img src="image/korea.png" alt="South Korea">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                            <h2>Korea</h2>
+                        </div>
+                        <p class="cost">₹ 1,49,999.00 / Per Person/$1787</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>4 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i>Korea</p>
+                        </div>
+                        <a href="views/destination-korea.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-tag">Hot Deal</div>
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <a href="views/destination-tokyo.html">
+                                <img src="image/tokyo.jpg" alt="Tokyo, Japan">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <div class="card-header">
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                            <h2>Tokyo</h2>
+                        </div>
+                        <p class="cost">₹ 1,69,999.00/ Per Person/$2024</p>
+                        <div class="card-box">
+                            <p class="time"><i class="far fa-clock"></i>5 Days</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Tokyo</p>
+                        </div>
+                        <a href="views/destination-tokyo.html" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-container" data-aos="fade-up">
+                <a href="views/packages.html" class="view-all-btn">View All Destinations <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper" data-aos="fade-up">
+                <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+                    <img src="image/mountains.jpg" alt="Mountain view representing Go Trip's adventure tours">
+                    <div class="experience-badge">
+                        <span class="number">28</span>
+                        <span class="text">YEARS OF<br>EXPERIENCE</span>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left" data-aos-delay="100">
+                    <span class="section-subtitle">ABOUT OUR COMPANY</span>
+                    <h2 class="section-title">We Are <span class="highlight-text">Go Trip</span>: Your Trusted Travel Partner</h2>
+                    <p class="about-description">
+                        At Go Trip, we believe that travel is more than just visiting new places; it's about creating unforgettable experiences and lifelong memories. With over 28 years of experience in the travel industry, we have mastered the art of crafting personalized and unique travel journeys that cater to the diverse interests and preferences of our clients.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Personalized Planning</h4>
+                                <p>Custom itineraries designed just for you</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Expert Local Guides</h4>
+                                <p>Deep knowledge of destinations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Sustainable Tourism</h4>
+                                <p>Eco-friendly travel options</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>24/7 Support</h4>
+                                <p>Always there when you need us</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-buttons">
+                        <a href="views/about.html" class="btn btn-primary">Learn More</a>
+                        <button class="btn btn-secondary enable-notifications" id="aboutAlertsBtn" style="display: none;"><i class="fas fa-bell"></i> Enable Travel Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Testimonials</span>
+                <h2 class="section-title">What Our Travelers Say</h2>
+            </div>
+            
+            <div class="testimonials-slider" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-item">
+                    <div class="testimonial-img">
+                        <img src="image/abhi.jpg" alt="Customer Photo">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Our trip to Switzerland was flawlessly planned. The local guides were knowledgeable and the accommodations were superb. Can't wait to book my next adventure with Go Trip!"</p>
+                        <div class="testimonial-info">
+                            <h4>Abhishek Kumar</h4>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item" style="display: none;">
+                    <div class="testimonial-img">
+                        <img src="image/navneet.jpg" alt="Customer Photo">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"The trip to Paris exceeded our expectations. The attention to detail and personalized service made this honeymoon truly special. Thank you Go Trip for the memories!"</p>
+                        <div class="testimonial-info">
+                            <h4>Navneet Sharma</h4>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item" style="display: none;">
+                    <div class="testimonial-img">
+                        <img src="image/nandan.jpg" alt="Customer Photo">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"As a solo traveler, safety was my priority. Go Trip ensured I felt secure while still having an authentic experience in Tokyo. Their 24/7 support was invaluable!"</p>
+                        <div class="testimonial-info">
+                            <h4>Nandan Singh</h4>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial Navigation Dots -->
+            <div class="testimonial-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+<div class="footer-container">
+    <div class="footer-row">
+        <!-- Company Info Column -->
+        <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime. We specialize in crafting personalized travel experiences around the globe.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="views/packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="views/tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="views/trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="views/blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                            <li><a href="views/about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="views/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+            </ul>
+        </div>
+
+                    <!-- Popular Destinations -->
+        <div class="footer-column">
+            <h3>Popular Destinations</h3>
+            <ul class="footer-links">
+                            <li><a href="views/destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="views/destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="views/destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="views/destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="views/destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="views/destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter & Contact -->
+        <div class="footer-column">
+            <h3>Newsletter</h3>
+            <p class="newsletter-text">Subscribe for travel deals and offers</p>
+            <form class="footer-newsletter-form">
+                <div class="newsletter-input-group">
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+            <h3 class="contact-heading">Contact Us</h3>
+            <ul class="contact-info">
+                <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Copyright Section -->
+<div class="footer-bottom">
+                <div class="container">
+    <div class="footer-bottom-content">
+        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        <ul class="footer-bottom-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+        </ul>
+                    </div>
+                </div>
+    </div>
+</div>
+</footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Scripts -->
+<script src="sounds/notification.js"></script>
+<script>
+    // Set the path for travel alerts JSON
+    window.travelAlertsJsonPath = 'travel_alerts.json';
+</script>
+<script src="js/travel-alerts.js?v=1.1"></script>
+<script src="js/colorful-effects.js"></script>
+
+    <!-- Custom JavaScript for interaction -->
+    <script>
+        // Menu Toggle for Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const menu = document.querySelector('.menu');
+        const body = document.body;
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            this.classList.toggle('is-active');
+            
+            // Prevent scrolling when menu is open
+            if (menu.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu when clicking a link (for mobile)
+        const menuLinks = document.querySelectorAll('.menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('is-active');
+                    body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Enable alerts functionality
+        const enableAlertsBtn = document.getElementById('enableAlertsBtn');
+        if (enableAlertsBtn) {
+            enableAlertsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Check if notification function exists (from travel-alerts.js)
+                if (typeof enableNotifications === 'function') {
+                    enableNotifications();
+                }
+            });
+        }
+        
+        // Enable carousel functionality for testimonials
+        const testimonials = document.querySelectorAll('.testimonial-item');
+        const dots = document.querySelectorAll('.dot');
+        let currentTestimonial = 0;
+        let testimonialInterval;
+        
+        function showTestimonial(index) {
+            // Hide all testimonials
+            testimonials.forEach((item, i) => {
+                item.style.display = 'none';
+                if (dots[i]) dots[i].classList.remove('active');
+            });
+            
+            // Show current testimonial
+            if (testimonials[index]) {
+                testimonials[index].style.display = 'flex';
+                if (dots[index]) dots[index].classList.add('active');
+            }
+        }
+        
+        // Initialize testimonials if they exist
+        if (testimonials.length > 0) {
+            // Initialize testimonials
+            showTestimonial(currentTestimonial);
+            
+            // Add click handlers to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentTestimonial = index;
+                    showTestimonial(currentTestimonial);
+                    
+                    // Reset interval timer when manually changing testimonial
+                    clearInterval(testimonialInterval);
+                    startTestimonialInterval();
+                });
+            });
+            
+            // Function to start automatic testimonial rotation
+            function startTestimonialInterval() {
+                testimonialInterval = setInterval(() => {
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                    showTestimonial(currentTestimonial);
+                }, 5000);
+            }
+            
+            // Start automatic testimonial rotation
+            startTestimonialInterval();
+        }
+        
+        // Enhance navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-bar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>

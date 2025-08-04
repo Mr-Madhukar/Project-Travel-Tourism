@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Go Trip</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo-container">
+                    <a href="../index.html"><i class="fas fa-plane-departure"></i> Go Trip</a>
+                </div>
+                <h1>Welcome Back!</h1>
+                <p>Sign in to continue your journey with Go Trip</p>
+            </div>
+
+            <!-- Error display for direct form submission -->
+            <div id="login-error" style="display: none; color: #e74c3c; background-color: #fef5f5; border-left: 4px solid #e74c3c; padding: 10px; margin-bottom: 20px; font-size: 14px; text-align: left;"></div>
+
+            <form class="login-form" id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Email or Username" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility()"></i>
+                </div>
+                
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Log In</button>
+                
+                <!-- Fallback login method -->
+                <div class="fallback-login" style="margin-top: 10px; text-align: center;">
+                    <a href="#" id="directLoginLink" style="font-size: 0.9em; color: #555;">Having trouble? Try direct login</a>
+                </div>
+                
+                <div class="social-login">
+                    <p>Or sign in with</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="register-link">
+                    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="travel-illustration">
+            <!-- This will be styled with a background image in CSS -->
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const eyeIcon = document.querySelector('.toggle-password');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // More reliable connection test that will work with or without test_login.php
+        async function testConnection() {
+            const serverBaseUrl = 'http://localhost/gotrip/';
+            try {
+                console.log('Testing server connection...');
+                
+                // First try to fetch test_login.php
+                try {
+                    const response = await fetch(serverBaseUrl + 'test_login.php');
+                    if (response.ok) {
+                        console.log('Connection successful via test_login.php');
+                        return true;
+                    }
+                } catch (e) {
+                    console.log('test_login.php not available:', e.message);
+                }
+                
+                // If that fails, try a HEAD request to the main directory
+                try {
+                    const headResponse = await fetch(serverBaseUrl, { method: 'HEAD' });
+                    console.log('HEAD response status:', headResponse.status);
+                    return headResponse.ok;
+                } catch (e) {
+                    console.log('HEAD request failed:', e.message);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Connection test failed:', error);
+                return false;
+            }
+        }
+        
+        // Initialize the login form and check for error messages from direct login
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('Document loaded');
+            
+            // Check for error message in URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorMsg = urlParams.get('error');
+            if (errorMsg) {
+                const errorElement = document.getElementById('login-error');
+                if (errorElement) {
+                    errorElement.textContent = decodeURIComponent(errorMsg);
+                    errorElement.style.display = 'block';
+                }
+            }
+            
+            // Test connectivity first
+            const connectivityTest = await testConnection();
+            console.log('Connectivity test result:', connectivityTest);
+            
+            // Set up direct login link
+            const directLoginLink = document.getElementById('directLoginLink');
+            if (directLoginLink) {
+                directLoginLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const loginForm = document.getElementById('loginForm');
+                    if (loginForm) {
+                        loginForm.action = 'http://localhost/gotrip/login.php';
+                        loginForm.method = 'post';
+                        loginForm.submit();
+                    }
+                });
+            }
+            
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                console.log('Login form found');
+                loginForm.addEventListener('submit', function(event) {
+                    console.log('Login form submitted');
+                    // If connectivity test failed, use direct form submission
+                    if (!connectivityTest) {
+                        if (confirm('There seems to be a connectivity issue. Try direct form submission?')) {
+                            // Set form action and let it submit normally
+                            loginForm.action = 'http://localhost/gotrip/login.php';
+                            loginForm.method = 'post';
+                            return true;
+                        }
+                    }
+                    handleLogin(event);
+                });
+            } else {
+                console.error('Login form not found!');
+            }
+            
+            // Log the current directory
+            console.log('Current path:', window.location.pathname);
+        });
+    </script>
+</body>
+</html>

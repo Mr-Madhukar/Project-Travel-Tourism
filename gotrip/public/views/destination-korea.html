@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korea - Go Trip</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/destination.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My
+                    Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container for Inline Alerts -->
+    <div class="inline-alerts"></div>
+
+    <!-- Destination Header -->
+    <section class="destination-header destination-page" style="background-image: url(../image/korea.png);"
+        data-destination-id="5">
+        <div class="destination-overlay"></div>
+        <div class="destination-title">
+            <h1>Dynamic South Korea</h1>
+            <p>Discover a fascinating blend of ancient traditions and cutting-edge modernity</p>
+        </div>
+    </section>
+
+    <!-- Destination Overview -->
+    <section class="destination-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Why Visit South Korea?</h2>
+                    <p>South Korea offers a fascinating journey through time, where ancient palaces stand in the shadow
+                        of futuristic skyscrapers and traditional markets thrive alongside high-tech shopping districts.
+                        From Seoul's dynamic cityscape to serene temple retreats nestled in misty mountains, Korea
+                        presents an enticing mix of fast-paced modernity and time-honored traditions. Add to this a
+                        globally celebrated cuisine, innovative beauty culture, and the unstoppable wave of K-pop and
+                        K-dramas, and you have a destination that appeals to travelers of all interests and ages.</p>
+
+                    <div class="overview-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">🏯</span>
+                            <h3>Rich Heritage</h3>
+                            <p>Explore ancient palaces, ornate temples, and preserved folk villages that showcase
+                                Korea's 5,000-year history</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🌆</span>
+                            <h3>Urban Innovation</h3>
+                            <p>Experience ultra-modern cities with cutting-edge technology, design, and architecture</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🍜</span>
+                            <h3>Culinary Delights</h3>
+                            <p>Indulge in flavorful Korean cuisine from bibimbap and bulgogi to street food and banchan
+                                side dishes</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🎭</span>
+                            <h3>Korean Wave</h3>
+                            <p>Immerse yourself in the global phenomenon of K-pop, K-dramas, and innovative beauty
+                                culture</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-details">
+                    <div class="detail-box">
+                        <h3>Best Time to Visit</h3>
+                        <p>Spring (March-May) for cherry blossoms and mild weather</p>
+                        <p>Fall (September-November) for vibrant autumn foliage</p>
+                        <p>Winter (December-February) for skiing and snow festivals</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Language</h3>
+                        <p>Korean (official language)</p>
+                        <p>English signage in major cities and tourist areas</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Currency</h3>
+                        <p>Korean Won (₩)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h3>Stay Updated</h3>
+                        <button class="enable-notifications"><i class="fas fa-bell"></i> Get Seoul Travel
+                            Alerts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-places">
+        <div class="container">
+            <h2>Top Tourist Destinations in South Korea</h2>
+            <div class="places-grid">
+                <div class="place-card" data-aos="fade-up">
+                    <div class="place-img">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.yg-CSvb6ZKY41uAMAQWhwwHaE8?cb=iwc1&rs=1&pid=ImgDetMain"
+                            alt="Gyeongbokgung Palace, Seoul">
+                    </div>
+                    <div class="place-info">
+                        <h3>Gyeongbokgung Palace</h3>
+                        <p>Seoul's grandest royal palace featuring majestic architecture, beautiful gardens, and the
+                            impressive changing of the guard ceremony</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-4 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="place-img">
+                        <img src="https://static.vecteezy.com/system/resources/previews/002/257/919/large_2x/n-seoul-tower-on-namsan-mountain-landmark-of-seoul-south-korea-free-photo.jpg"
+                            alt="Namsan Seoul Tower">
+                    </div>
+                    <div class="place-info">
+                        <h3>N Seoul Tower</h3>
+                        <p>Iconic tower offering panoramic views of Seoul, famous love locks, and multimedia attractions
+                        </p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="place-img">
+                        <img src="https://livingnomads.com/wp-content/uploads/2017/08/15/bukchon-hanok-village-1.jpg"
+                            alt="Bukchon Hanok Village">
+                    </div>
+                    <div class="place-info">
+                        <h3>Bukchon Hanok Village</h3>
+                        <p>Historic neighborhood with traditional Korean houses, cultural workshops, and charming
+                            teahouses</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: Half day</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="place-img">
+                        <img src="https://new7wonders.com/app/uploads/sites/4/2016/09/044-Seongsan-Ilchulbong-and-Hallasan-4096x2618.jpg"
+                            alt="Jeju Island">
+                    </div>
+                    <div class="place-info">
+                        <h3>Jeju Island</h3>
+                        <p>Volcanic island paradise with stunning beaches, lava tubes, waterfalls, and unique cultural
+                            attractions</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 3-5 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="place-img">
+                        <img src="https://www.tripsavvy.com/thmb/Z66eh2iN8xu1n_CE0HGi0VDe5c8=/2123x1413/filters:no_upscale():max_bytes(150000):strip_icc()/haedong-yonggungsa-temple-and-haeundae-sea-in-busan--south-korea--848866342-9b505d7b03c442cbb46e3b0b2e31d557.jpg"
+                            alt="Busan">
+                    </div>
+                    <div class="place-info">
+                        <h3>Busan</h3>
+                        <p>Vibrant coastal city with beautiful beaches, seafood markets, mountain temples, and the
+                            colorful Gamcheon Culture Village</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: 2-3 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="place-img">
+                        <img src="https://c8.alamy.com/comp/J1JBR8/heavily-fortified-korean-demilitarized-zone-dmz-line-between-north-J1JBR8.jpg"
+                            alt="DMZ">
+                    </div>
+                    <div class="place-info">
+                        <h3>DMZ (Demilitarized Zone)</h3>
+                        <p>Historic border area between North and South Korea with observation points, tunnels, and
+                            educational exhibits</p>
+                        <div class="place-meta">
+                            <span>🕓 Recommended: Full day tour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Packages -->
+    <section class="trip-packages">
+        <div class="container">
+            <h2>South Korea Tour Packages</h2>
+            <p class="section-intro">Choose from our carefully curated travel packages designed to give you the ultimate
+                Korean experience</p>
+
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <div class="package-header">
+                        <h3>Seoul Discovery</h3>
+                        <span class="package-price">₹89,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 4 Days</span>
+                            <span>👥 Max Group Size: 12</span>
+                            <span>🏨 4 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1:</strong> Arrival in Seoul, Welcome Dinner with Korean BBQ</li>
+                                <li><strong>Day 2:</strong> Gyeongbokgung Palace, National Folk Museum, Bukchon Hanok
+                                    Village</li>
+                                <li><strong>Day 3:</strong> N Seoul Tower, Myeongdong Shopping, Han River Cruise</li>
+                                <li><strong>Day 4:</strong> Insadong Arts and Crafts, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ 3 nights accommodation</li>
+                                <li>✓ Daily breakfast, welcome dinner</li>
+                                <li>✓ All transportation within Seoul</li>
+                                <li>✓ Entry tickets to attractions</li>
+                                <li>✓ English-speaking guide</li>
+                                <li>✓ Airport transfers</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Seoul%20Discovery" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="package-header">
+                        <h3>Korean Highlights</h3>
+                        <span class="package-price">₹1,29,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 7 Days</span>
+                            <span>👥 Max Group Size: 10</span>
+                            <span>🏨 4-5 Star Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1-2:</strong> Seoul Exploration (Palaces, Markets, Modern Districts)
+                                </li>
+                                <li><strong>Day 3:</strong> DMZ Tour</li>
+                                <li><strong>Day 4:</strong> Train to Gyeongju, Historic Sites and Bulguksa Temple</li>
+                                <li><strong>Day 5-6:</strong> Busan City Tour (Haeundae Beach, Gamcheon Village,
+                                    Jagalchi Market)</li>
+                                <li><strong>Day 7:</strong> Return to Seoul, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Premium accommodation</li>
+                                <li>✓ Daily breakfast, 2 special dinners</li>
+                                <li>✓ Domestic transportation (KTX train)</li>
+                                <li>✓ DMZ tour</li>
+                                <li>✓ Cultural performance ticket</li>
+                                <li>✓ Professional guides in each city</li>
+                                <li>✓ All transfers and entrance fees</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Korean%20Highlights" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-header">
+                        <h3>Korean Complete Experience</h3>
+                        <span class="package-price">₹1,79,999 / Per Person</span>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-details">
+                            <span>🕓 10 Days</span>
+                            <span>👥 Max Group Size: 8</span>
+                            <span>🏨 Luxury Accommodation</span>
+                        </div>
+                        <div class="package-itinerary">
+                            <h4>Itinerary Overview:</h4>
+                            <ul>
+                                <li><strong>Day 1-3:</strong> Seoul Comprehensive Tour</li>
+                                <li><strong>Day 4:</strong> Suwon Hwaseong Fortress & Korean Folk Village</li>
+                                <li><strong>Day 5-6:</strong> Jeju Island Exploration</li>
+                                <li><strong>Day 7:</strong> Gyeongju Historic Areas</li>
+                                <li><strong>Day 8-9:</strong> Busan Highlights</li>
+                                <li><strong>Day 10:</strong> Return to Seoul, Departure</li>
+                            </ul>
+                        </div>
+                        <div class="package-includes">
+                            <h4>Package Includes:</h4>
+                            <ul>
+                                <li>✓ Luxury accommodations</li>
+                                <li>✓ Daily breakfast, multiple cultural meals</li>
+                                <li>✓ Domestic flights to/from Jeju Island</li>
+                                <li>✓ Private transportation</li>
+                                <li>✓ Temple stay experience</li>
+                                <li>✓ Traditional cooking class</li>
+                                <li>✓ K-pop or traditional performance</li>
+                                <li>✓ Professional photography at key locations</li>
+                            </ul>
+                        </div>
+                        <a href="book.html?destination=Korean%20Complete%20Experience" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-tips">
+        <div class="container">
+            <h2>Travel Tips for South Korea</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <div class="tip-icon">🚇</div>
+                    <h3>Transportation</h3>
+                    <p>Purchase a T-money card for seamless access to public transportation across major cities. The
+                        Seoul subway system is extensive, efficient, and has English signage.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-icon">👟</div>
+                    <h3>Shoe Etiquette</h3>
+                    <p>Always remove your shoes when entering homes, traditional restaurants with floor seating, and
+                        certain cultural sites. Bring slip-on shoes for convenience.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-icon">📱</div>
+                    <h3>Stay Connected</h3>
+                    <p>Korea has excellent WiFi coverage. Rent a pocket WiFi or purchase a local SIM card at the airport
+                        for constant connectivity and translation apps.</p>
+                </div>
+
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-icon">🍴</div>
+                    <h3>Dining Customs</h3>
+                    <p>Wait for elders to start eating, never leave chopsticks standing in rice, and be prepared for
+                        communal dining where dishes are shared among everyone at the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience South Korea?</h2>
+            <p>Book your Korean adventure today and immerse yourself in this fascinating blend of tradition and
+                innovation.</p>
+            <a href="book.html?destination=South%20Korea" class="cta-button">Book Your Trip Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <!-- Company Info Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <div style="width: 42px; height: 42px; background-color: #ff6b6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;"></div>
+                            <h3>Go Trip</h3>
+                        </div>
+                        <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Section -->
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                            <li><a href="tours.html"><i class="fas fa-chevron-right"></i> Tours</a></li>
+                            <li><a href="trip-planner.html"><i class="fas fa-chevron-right"></i> Trip Planner</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Destinations -->
+                    <div class="footer-column">
+                        <h3>Popular Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="destination-paris.html"><i class="fas fa-chevron-right"></i> Paris, France</a></li>
+                            <li><a href="destination-tokyo.html"><i class="fas fa-chevron-right"></i> Tokyo, Japan</a></li>
+                            <li><a href="destination-switzerland.html"><i class="fas fa-chevron-right"></i> Switzerland</a></li>
+                            <li><a href="destination-canada.html"><i class="fas fa-chevron-right"></i> Canada</a></li>
+                            <li><a href="destination-korea.html"><i class="fas fa-chevron-right"></i> South Korea</a></li>
+                            <li><a href="destination-monaco.html"><i class="fas fa-chevron-right"></i> Monaco</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> <span>G.P PURNEA, Bihar, India</span></li>
+                            <li><i class="fas fa-phone"></i> <span>+91 9473452441</span></li>
+                            <li><i class="fas fa-envelope"></i> <span>info@gotrip.com</span></li>
+                        </ul>
+                        <form class="footer-newsletter-form">
+                            <h3>Newsletter</h3>
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Your Email" required>
+                                <button type="submit" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    logout();
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+
+                    // Redirect to home page
+                    window.location.href = '../index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = '../index.html';
+                });
+        }
+    </script>
+
+    <!-- Travel Alerts Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script>
+        // Set the path for travel alerts JSON
+        window.travelAlertsJsonPath = '../travel_alerts.json';
+    </script>
+    <script src="../js/travel-alerts.js"></script>
+
+    <!-- Back to Top Button JavaScript -->
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+
+</html>

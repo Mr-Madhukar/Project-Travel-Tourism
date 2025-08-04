@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages - Go Trip</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/packages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Satisfy&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Package Banner -->
+    <header class="package-banner">
+        <div class="banner-content">
+            <h1>Explore Our Premium Travel Packages</h1>
+            <p>Handcrafted itineraries to make your dream vacation a reality</p>
+        </div>
+    </header>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="packages-text" data-aos="fade-up">
+            <small>Exclusive Packages</small>
+            <h2>Our Best Packages</h2>
+            <p>Choose from our carefully designed packages offering unforgettable experiences at the world's most breathtaking destinations</p>
+        </div>
+
+        <div class="package-filter" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All Packages</button>
+            <button class="filter-btn" data-filter="europe">Europe</button>
+            <button class="filter-btn" data-filter="asia">Asia</button>
+            <button class="filter-btn" data-filter="america">America</button>
+        </div>
+
+        <div class="package-cards" data-aos="fade-up">
+            <div class="package-card" data-category="europe">
+                <div class="image-container">
+                    <img src="../image/switzerland.png" alt="Beautiful view of Switzerland">
+                    <div class="image-overlay">
+                        <span class="days-badge">5 Days</span>
+                        <span class="price-badge">₹ 1,59,999</span>
+                    </div>
+                </div>
+                <div class="package-details">
+                    <div class="package-header">
+                        <h3>Swiss Adventure</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(120 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="package-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Switzerland</p>
+                        <p><i class="fas fa-calendar-alt"></i> Available all year</p>
+                        <p><i class="fas fa-user-friends"></i> Max group size: 12</p>
+                    </div>
+                    <p class="package-description">Experience the breathtaking Swiss Alps, serene lakes, and charming cities like Zurich and Lucerne. Perfect for nature lovers and adventure seekers.</p>
+                    <div class="itinerary-highlights">
+                        <h4>Itinerary Highlights</h4>
+                        <ul>
+                            <li>Day 1: Arrival in Zurich and city tour</li>
+                            <li>Day 2: Explore the Swiss Alps</li>
+                            <li>Day 3: Lake Lucerne boat ride</li>
+                            <li>Day 4: Visit Interlaken and Grindelwald</li>
+                            <li>Day 5: Departure</li>
+                        </ul>
+                    </div>
+                    <div class="package-includes">
+                        <h4>Package Includes</h4>
+                        <ul class="includes-list">
+                            <li><i class="fas fa-check"></i> 4-star hotel accommodation</li>
+                            <li><i class="fas fa-check"></i> Daily breakfast and dinner</li>
+                            <li><i class="fas fa-check"></i> All transportation within Switzerland</li>
+                            <li><i class="fas fa-check"></i> Professional English-speaking guide</li>
+                        </ul>
+                    </div>
+                    <a href="book.html?package=swiss-adventure" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="package-card" data-category="europe">
+                <div class="image-container">
+                    <img src="../image/paris.jpg" alt="Iconic landmarks of Paris">
+                    <div class="image-overlay">
+                        <span class="days-badge">4 Days</span>
+                        <span class="price-badge">₹ 1,49,999</span>
+                    </div>
+                </div>
+                <div class="package-details">
+                    <div class="package-header">
+                        <h3>Paris Escapade</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(98 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="package-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                        <p><i class="fas fa-calendar-alt"></i> Available all year</p>
+                        <p><i class="fas fa-user-friends"></i> Max group size: 10</p>
+                    </div>
+                    <p class="package-description">Discover the romance and charm of Paris. From the Eiffel Tower to the Louvre, experience the art, history, and cuisine that make Paris a top destination.</p>
+                    <div class="itinerary-highlights">
+                        <h4>Itinerary Highlights</h4>
+                        <ul>
+                            <li>Day 1: Arrival and Eiffel Tower visit</li>
+                            <li>Day 2: Louvre Museum tour</li>
+                            <li>Day 3: Montmartre and Sacré-Cœur</li>
+                            <li>Day 4: Departure</li>
+                        </ul>
+                    </div>
+                    <div class="package-includes">
+                        <h4>Package Includes</h4>
+                        <ul class="includes-list">
+                            <li><i class="fas fa-check"></i> Boutique hotel accommodation</li>
+                            <li><i class="fas fa-check"></i> Daily breakfast and one dinner cruise</li>
+                            <li><i class="fas fa-check"></i> Paris Museum Pass</li>
+                            <li><i class="fas fa-check"></i> Expert local guide</li>
+                        </ul>
+                    </div>
+                    <a href="book.html?package=paris-escapade" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="package-card" data-category="america">
+                <div class="image-container">
+                    <img src="../image/canada.png" alt="Natural beauty of Canada">
+                    <div class="image-overlay">
+                        <span class="days-badge">5 Days</span>
+                        <span class="price-badge">₹ 1,99,999</span>
+                    </div>
+                </div>
+                <div class="package-details">
+                    <div class="package-header">
+                        <h3>Canadian Rockies</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(145 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="package-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Calgary to Vancouver, Canada</p>
+                        <p><i class="fas fa-calendar-alt"></i> May to October</p>
+                        <p><i class="fas fa-user-friends"></i> Max group size: 15</p>
+                    </div>
+                    <p class="package-description">Embark on a journey through the stunning landscapes of the Canadian Rockies. Enjoy hiking, wildlife viewing, and exploring national parks like Banff and Jasper.</p>
+                    <div class="itinerary-highlights">
+                        <h4>Itinerary Highlights</h4>
+                        <ul>
+                            <li>Day 1: Arrival in Calgary</li>
+                            <li>Day 2: Banff National Park exploration</li>
+                            <li>Day 3: Lake Louise and Moraine Lake</li>
+                            <li>Day 4: Scenic train ride</li>
+                            <li>Day 5: Departure from Vancouver</li>
+                        </ul>
+                    </div>
+                    <div class="package-includes">
+                        <h4>Package Includes</h4>
+                        <ul class="includes-list">
+                            <li><i class="fas fa-check"></i> Mountain lodge accommodation</li>
+                            <li><i class="fas fa-check"></i> All meals included</li>
+                            <li><i class="fas fa-check"></i> National park entrance fees</li>
+                            <li><i class="fas fa-check"></i> Wildlife spotting tours</li>
+                        </ul>
+                    </div>
+                    <a href="book.html?package=canadian-rockies" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="package-card" data-category="asia">
+                <div class="image-container">
+                    <img src="../image/tokyo.jpg" alt="Tokyo cityscape">
+                    <div class="image-overlay">
+                        <span class="days-badge">5 Days</span>
+                        <span class="price-badge">₹ 1,69,999</span>
+                    </div>
+                </div>
+                <div class="package-details">
+                    <div class="package-header">
+                        <h3>Tokyo Explorer</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(110 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="package-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</p>
+                        <p><i class="fas fa-calendar-alt"></i> Available all year</p>
+                        <p><i class="fas fa-user-friends"></i> Max group size: 10</p>
+                    </div>
+                    <p class="package-description">Discover the perfect blend of tradition and innovation in Tokyo. Experience ancient temples, futuristic technology, delicious cuisine, and vibrant neighborhoods.</p>
+                    <div class="itinerary-highlights">
+                        <h4>Itinerary Highlights</h4>
+                        <ul>
+                            <li>Day 1: Arrival and Asakusa district</li>
+                            <li>Day 2: Tsukiji Fish Market and Harajuku</li>
+                            <li>Day 3: Mt. Fuji day trip</li>
+                            <li>Day 4: Akihabara and Tokyo Tower</li>
+                            <li>Day 5: Departure</li>
+                        </ul>
+                    </div>
+                    <div class="package-includes">
+                        <h4>Package Includes</h4>
+                        <ul class="includes-list">
+                            <li><i class="fas fa-check"></i> Central Tokyo hotel accommodation</li>
+                            <li><i class="fas fa-check"></i> Daily breakfast and one traditional dinner</li>
+                            <li><i class="fas fa-check"></i> Tokyo subway pass</li>
+                            <li><i class="fas fa-check"></i> English-speaking guide</li>
+                        </ul>
+                    </div>
+                    <a href="book.html?package=tokyo-explorer" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" data-aos="fade-up">
+        <div class="testimonials-text">
+            <small>Traveler Stories</small>
+            <h2>What Our Clients Say</h2>
+        </div>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <div class="testimonial-img">
+                    <img src="../image/abhi.jpg" alt="Sarah Johnson">
+                </div>
+                <div class="testimonial-content">
+                    <p>"The Swiss Adventure package exceeded all my expectations. The itinerary was perfectly balanced between guided tours and free time to explore on my own. Our guide was knowledgeable and friendly. Highly recommend!"</p>
+                    <h4>Abhishek</h4>
+                    <p class="testimonial-trip">Swiss Adventure, May 2023</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-img">
+                    <img src="../image/navneet.jpg" alt="Michael and Lisa Chen">
+                </div>
+                <div class="testimonial-content">
+                    <p>"Paris Escapade was the perfect anniversary gift for my wife. The boutique hotel was charming and located in the heart of the city. The dinner cruise on the Seine was magical and something we'll remember forever."</p>
+                    <h4>Navneet</h4>
+                    <p class="testimonial-trip">Paris Escapade, June 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" data-aos="fade-up">
+        <div class="cta-content">
+            <h2>Ready for Your Next Adventure?</h2>
+            <p>Contact our travel experts to customize any package to your preferences</p>
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Main Footer -->
+        <div class="footer-main">
+            <div class="footer-column">
+                <h3>About Go Trip</h3>
+                <p>We are a premium travel agency specializing in handcrafted travel experiences to the world's most amazing destinations.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Travel Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i>G.P PURNEA</p>
+                <p><i class="fas fa-phone"></i> +91 9473452441</p>
+                <p><i class="fas fa-envelope"></i> info@gotrip.com</p>
+            </div>
+        </div>
+        <!-- Copyright Section -->
+        <div class="copyright">
+            <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+            });
+            
+            // Package filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const packageCards = document.querySelectorAll('.package-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    packageCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                // User is logged in, show booking and logout links
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add event listener to logout link
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+                
+                // Add username to book now links
+                const bookNowBtns = document.querySelectorAll('.book-now-btn');
+                const username = localStorage.getItem('username');
+                bookNowBtns.forEach(btn => {
+                    const href = btn.getAttribute('href');
+                    btn.setAttribute('href', `${href}&username=${encodeURIComponent(username)}`);
+                });
+            } else {
+                // User is not logged in, show login link
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+                
+                // Update book now buttons to redirect to login
+                const bookNowBtns = document.querySelectorAll('.book-now-btn');
+                bookNowBtns.forEach(btn => {
+                    const packageUrl = btn.getAttribute('href');
+                    btn.setAttribute('href', `login.html?return=${encodeURIComponent(packageUrl)}`);
+                });
+            }
+        });
+        
+        // Logout function
+        function logout() {
+            // Send request to logout.php
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Clear local storage
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Still clear local storage and redirect even if server request fails
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Itinerary Details - Go Trip</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/trip-planner.css" />
+    <link rel="stylesheet" href="../css/travel-alerts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../image/logo.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+    <style>
+        .itinerary-details-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .itinerary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .itinerary-title {
+            font-size: 2rem;
+            color: #333;
+        }
+        
+        .itinerary-info {
+            display: flex;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .destination-image {
+            width: 40%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .itinerary-meta {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .meta-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .meta-item i {
+            color: #ff6b6b;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .day-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .day-header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+        }
+        
+        .day-content {
+            padding: 20px;
+        }
+        
+        .day-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ff6b6b;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #e0e0e0;
+            z-index: -1;
+        }
+        
+        .timeline-time {
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .action-btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .primary-btn {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        
+        .secondary-btn {
+            background-color: #4d4d4d;
+            color: white;
+        }
+        
+        .outline-btn {
+            background-color: transparent;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .loading-container {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .loading-spinner {
+            color: #ff6b6b;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo">Go Trip</div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="trip-planner.html">Trip Planner</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-item"><a href="login.html" id="loginLink">LOGIN/SIGNUP</a></li>
+            <li class="booking-item" style="display: none;"><a href="../../my_bookings.php" id="myBookingsLink">My Bookings</a></li>
+            <li class="logout-item" style="display: none;"><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Travel Alerts Container -->
+    <div class="inline-alerts"></div>
+
+    <!-- Itinerary Details Content -->
+    <main class="itinerary-details-container">
+        <!-- Loading State -->
+        <div id="loading-container" class="loading-container">
+            <i class="fas fa-spinner fa-spin loading-spinner"></i>
+            <p>Loading your itinerary...</p>
+        </div>
+        
+        <!-- Itinerary Content (hidden until loaded) -->
+        <div id="itinerary-content" style="display: none;">
+            <div class="itinerary-header">
+                <h1 class="itinerary-title" id="itinerary-title">Loading...</h1>
+                <span class="itinerary-status" id="itinerary-status">Draft</span>
+            </div>
+            
+            <div class="itinerary-info">
+                <div class="destination-image">
+                    <img id="destination-image" src="../image/paris.jpg" alt="Destination">
+                </div>
+                <div class="itinerary-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="destination-name">Loading...</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="trip-dates">Loading...</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-hotel"></i>
+                        <span id="accommodation-name">Loading...</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-taxi"></i>
+                        <span id="transportation-type">Loading...</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span id="total-price">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Your Daily Itinerary</h2>
+            <div id="days-container">
+                <!-- Day cards will be generated here -->
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn primary-btn" id="book-btn">Book This Trip</button>
+                <button class="action-btn secondary-btn" id="edit-btn">Edit Itinerary</button>
+                <button class="action-btn outline-btn" id="back-btn">Back to Trip Planner</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- Company Info Column -->
+                <div class="footer-column">
+                    <h3>Go Trip</h3>
+                    <p class="footer-description">Your trusted travel partner since 1996, creating unforgettable journeys and memories that last a lifetime.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="trip-planner.html">Trip Planner</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tours & Destinations -->
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="destination-paris.html">Paris, France</a></li>
+                        <li><a href="destination-tokyo.html">Tokyo, Japan</a></li>
+                        <li><a href="destination-switzerland.html">Switzerland</a></li>
+                        <li><a href="destination-canada.html">Canada</a></li>
+                        <li><a href="destination-korea.html">South Korea</a></li>
+                        <li><a href="destination-monaco.html">Monaco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> G.P PURNEA</li>
+                        <li><i class="fas fa-phone"></i> +91 9473452441</li>
+                        <li><i class="fas fa-envelope"></i> info@gotrip.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Go Trip. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../sounds/notification.js"></script>
+    <script src="../js/travel-alerts.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            // Show/hide appropriate nav items
+            const loginItem = document.querySelector('.login-item');
+            const bookingItem = document.querySelector('.booking-item');
+            const logoutItem = document.querySelector('.logout-item');
+            
+            if (isLoggedIn) {
+                loginItem.style.display = 'none';
+                bookingItem.style.display = 'block';
+                logoutItem.style.display = 'block';
+                
+                // Add logout handler
+                document.getElementById('logoutLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+                
+                // Get itinerary ID from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const itineraryId = urlParams.get('id');
+                
+                if (itineraryId) {
+                    // Load itinerary details
+                    loadItineraryDetails(itineraryId);
+                } else {
+                    // No itinerary ID provided
+                    document.getElementById('loading-container').innerHTML = '<p>No itinerary selected. Please go back to the <a href="trip-planner.html">Trip Planner</a>.</p>';
+                }
+            } else {
+                loginItem.style.display = 'block';
+                bookingItem.style.display = 'none';
+                logoutItem.style.display = 'none';
+                
+                // Not logged in, redirect to login
+                document.getElementById('loading-container').innerHTML = '<p>Please <a href="login.html">login</a> to view your itinerary.</p>';
+            }
+            
+            // Button event listeners
+            document.getElementById('book-btn').addEventListener('click', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const itineraryId = urlParams.get('id');
+                window.location.href = `book.html?itinerary_id=${itineraryId}`;
+            });
+            
+            document.getElementById('edit-btn').addEventListener('click', function() {
+                alert('Edit feature coming soon!');
+            });
+            
+            document.getElementById('back-btn').addEventListener('click', function() {
+                window.location.href = 'trip-planner.html';
+            });
+        });
+        
+        // Load itinerary details from the server
+        function loadItineraryDetails(itineraryId) {
+            fetch(`get_trip_planner_data.php?action=get_itineraries&id=${itineraryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('loading-container').innerHTML = `<p>Error: ${data.error}</p>`;
+                        return;
+                    }
+                    
+                    // Hide loading and show content
+                    document.getElementById('loading-container').style.display = 'none';
+                    document.getElementById('itinerary-content').style.display = 'block';
+                    
+                    // Fill in itinerary details
+                    document.getElementById('itinerary-title').textContent = data.name;
+                    document.getElementById('itinerary-status').textContent = data.status.charAt(0).toUpperCase() + data.status.slice(1);
+                    document.getElementById('itinerary-status').className = `itinerary-status status-${data.status}`;
+                    
+                    // Fill destination info
+                    document.getElementById('destination-name').textContent = `${data.destination_name}, ${data.country}`;
+                    document.getElementById('destination-image').src = `./image/${data.destination_name.toLowerCase()}.jpg`;
+                    document.getElementById('destination-image').alt = data.destination_name;
+                    
+                    // Format dates
+                    const startDate = new Date(data.start_date);
+                    const endDate = new Date(data.end_date);
+                    const formattedStartDate = startDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    const formattedEndDate = endDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    const durationMs = endDate - startDate;
+                    const durationDays = Math.ceil(durationMs / (1000 * 60 * 60 * 24)) + 1;
+                    
+                    document.getElementById('trip-dates').textContent = `${formattedStartDate} to ${formattedEndDate} (${durationDays} days)`;
+                    
+                    // Accommodation and transportation
+                    document.getElementById('accommodation-name').textContent = data.accommodation_name || 'No accommodation selected';
+                    document.getElementById('transportation-type').textContent = data.transportation_type || 'No transportation selected';
+                    
+                    // Price
+                    document.getElementById('total-price').textContent = `₹ ${parseFloat(data.total_price).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                    
+                    // Generate day cards
+                    generateDayCards(data.items, durationDays, startDate);
+                    
+                    // Disable book button if already booked
+                    if (data.status === 'booked') {
+                        const bookBtn = document.getElementById('book-btn');
+                        bookBtn.disabled = true;
+                        bookBtn.textContent = 'Already Booked';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading itinerary:', error);
+                    document.getElementById('loading-container').innerHTML = '<p>Failed to load itinerary. Please try again.</p>';
+                });
+        }
+        
+        // Generate day cards for the itinerary
+        function generateDayCards(items, days, startDate) {
+            const daysContainer = document.getElementById('days-container');
+            daysContainer.innerHTML = '';
+            
+            // Group items by day
+            const itemsByDay = {};
+            items.forEach(item => {
+                const day = item.day_number;
+                if (!itemsByDay[day]) {
+                    itemsByDay[day] = [];
+                }
+                itemsByDay[day].push(item);
+            });
+            
+            // Create a card for each day
+            for (let i = 1; i <= days; i++) {
+                const dayItems = itemsByDay[i] || [];
+                
+                // Calculate the date for this day
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + i - 1);
+                const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+                
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                dayCard.innerHTML = `
+                    <div class="day-header">Day ${i} - ${formattedDate}</div>
+                    <div class="day-content">
+                        ${dayItems.length > 0 
+                            ? `<div class="day-timeline">
+                                ${dayItems.map(item => `
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">${item.start_time || 'Time not set'}</div>
+                                        <h3>${item.attraction_name}</h3>
+                                        <div class="timeline-details">
+                                            <div><i class="far fa-clock"></i> Duration: ${Math.floor(item.duration / 60)}h ${item.duration % 60}m</div>
+                                            <div><i class="fas fa-tag"></i> Price: ${parseFloat(item.price) > 0 ? '₹ ' + parseFloat(item.price).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : 'Free'}</div>
+                                        </div>
+                                        ${item.notes ? `<div class="timeline-notes"><i class="fas fa-sticky-note"></i> Notes: ${item.notes}</div>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>`
+                            : '<p>No activities planned for this day.</p>'
+                        }
+                    </div>
+                `;
+                
+                daysContainer.appendChild(dayCard);
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            fetch('logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html';
+                });
+        }
+    </script>
+    
+</body>
+</html> 
