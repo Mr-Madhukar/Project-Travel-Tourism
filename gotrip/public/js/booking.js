@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to load destinations into the select dropdown
 function loadDestinations() {
-            fetch('../get_destinations.php')        .then(response => response.json())
+            fetch('./destinations.json')
         .then(destinations => {
             const selectElement = document.getElementById('destination');
             selectElement.innerHTML = '<option value="">Select a destination</option>'; // Default empty option
