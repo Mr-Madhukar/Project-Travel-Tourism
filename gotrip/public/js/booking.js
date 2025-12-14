@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to load destinations into the select dropdown
 function loadDestinations() {
-    fetch('get_destinations.php')
-        .then(response => response.json())
+            fetch('../get_destinations.php')        .then(response => response.json())
         .then(destinations => {
             const selectElement = document.getElementById('destination');
             selectElement.innerHTML = '<option value="">Select a destination</option>'; // Default empty option
@@ -117,7 +116,7 @@ function setupBookingForm() {
         .then(data => {
             if (data.status === 'success') {
                 alert('Booking successful! Your booking reference is: ' + data.booking_id);
-                window.location.href = 'my_bookings.php';
+                            window.location.href = '../my_bookings.php';
             } else {
                 alert('Error: ' + data.message);
                 console.error('Booking error:', data);
@@ -155,7 +154,7 @@ function updatePrice() {
     
     // First try to get dynamic pricing if we have the ID
     if (destinationId) {
-        fetch(`get_prices.php?id=${destinationId}`)
+                    fetch(`../get_prices.php?id=${destinationId}`)
             .then(response => response.json())
             .then(prices => {
                 if (prices && prices.length > 0) {
