@@ -5,7 +5,7 @@ A modern, responsive travel and tourism website built with HTML, CSS, JavaScript
 ## 🌐 Explore Website
 
 ### Live Demo
-🔗 [View My Go Trip]([https://mr-madhukar.github.io/Madhukar-Portfolio/](https://mr-madhukar.github.io/Project-Travel-Tourism/gotrip/public/))
+🔗 [View My Go Trip]([https://mr-madhukar.github.io/Madhukar-Portfolio/](https://mr-madhukar.github.io/Project-Travel-Tourism/gotrip/public/)
 
 ## 🌟 Features
 
